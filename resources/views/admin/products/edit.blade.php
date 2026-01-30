@@ -33,6 +33,9 @@
         const thumbImg = document.getElementById('thumbnail-preview-img');
         const galleryRows = document.getElementById('gallery-rows');
         const addRowBtn = document.getElementById('add-gallery-row');
+        const existingFileInputs = document.querySelectorAll('input[name^=\"existing_files[\"]');
+        const deleteButtons = document.querySelectorAll('.delete-image');
+        const csrf = '{{ csrf_token() }}';
         const slugify = (str) => str.toString().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
         if (nameInput && slugPreview) {
             const setSlug = () => slugPreview.textContent = slugify(nameInput.value);
@@ -77,6 +80,37 @@
         if (addRowBtn && galleryRows) {
             addRowBtn.addEventListener('click', makeRow);
             // don't auto-add on edit, let user click
+        }
+
+        // preview replacement for existing images
+        if (existingFileInputs.length) {
+            existingFileInputs.forEach((input) => {
+                const id = input.name.match(/existing_files\\[(\\d+)\\]/)?.[1];
+                const preview = document.querySelector(`.existing-preview[data-id=\"${id}\"]`);
+                if (!preview) return;
+                input.addEventListener('change', (e) => {
+                    const [file] = e.target.files || [];
+                    if (!file) { preview.textContent = ''; preview.style.backgroundImage=''; return; }
+                    preview.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+                    preview.style.backgroundSize = 'cover';
+                    preview.style.backgroundPosition = 'center';
+                });
+            });
+        }
+
+        // delete existing image via separate form to avoid nested form issues
+        if (deleteButtons.length) {
+            deleteButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (!confirm(btn.dataset.confirm || 'Hapus?')) return;
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = btn.dataset.url;
+                    form.innerHTML = `<input type=\"hidden\" name=\"_token\" value=\"${csrf}\"><input type=\"hidden\" name=\"_method\" value=\"DELETE\">`;
+                    document.body.appendChild(form);
+                    form.submit();
+                });
+            });
         }
     })();
 </script>

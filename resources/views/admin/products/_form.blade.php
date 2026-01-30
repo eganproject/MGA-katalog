@@ -71,17 +71,24 @@
                     <!-- rows injected by JS -->
                 </div>
                 @if(!empty($product->images) && $product->images->count())
-                    <p class="text-xs text-slate-400 mt-2">Galeri tersimpan:</p>
-                    <div class="mt-2 grid grid-cols-3 gap-2">
+                    <p class="text-xs text-slate-400 mt-2">Galeri tersimpan (bisa ubah file & urutan):</p>
+                    <div class="mt-2 space-y-2">
                         @foreach($product->images as $img)
-                            <div class="group relative rounded-lg border border-slate-800 overflow-hidden">
-                                <img src="{{ asset('storage/'.$img->file_path) }}" alt="{{ $img->alt_text }}" class="h-24 w-full object-cover">
-                                <div class="absolute left-1 top-1 rounded-md bg-slate-900/70 px-2 py-1 text-[11px] text-slate-100">Urut: {{ $img->sort_order }}</div>
-                                <form method="POST" action="{{ route('admin.product-images.destroy', $img) }}" class="absolute top-1 right-1 hidden group-hover:block" onsubmit="return confirm('Hapus gambar ini?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="rounded-md bg-rose-500 text-white text-[11px] px-2 py-1">Hapus</button>
-                                </form>
+                            <div class="grid grid-cols-[120px_1fr_auto] gap-3 items-center rounded-lg border border-slate-800 bg-slate-800/50 p-3">
+                                <div class="relative h-20 w-full rounded-md overflow-hidden border border-slate-700 existing-preview" data-id="{{ $img->id }}" style="background-image:url('{{ asset('storage/'.$img->file_path) }}'); background-size:cover; background-position:center;">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="block text-xs text-slate-400">Ganti gambar (opsional, maks 2MB)</label>
+                                    <input type="file" name="existing_files[{{ $img->id }}]" accept="image/*" class="w-full text-sm text-slate-200 file:mr-3 file:rounded-lg file:border-0 file:bg-slate-800 file:px-3 file:py-2 file:text-slate-100 hover:file:bg-slate-700">
+                                    <label class="block text-xs text-slate-400">Urutan</label>
+                                    <input type="number" name="existing_sort_orders[{{ $img->id }}]" value="{{ $img->sort_order }}" min="0" class="w-24 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100">
+                                </div>
+                                <button type="button"
+                                        class="delete-image rounded-lg bg-rose-500/80 px-3 py-2 text-xs font-semibold text-white"
+                                        data-url="{{ route('admin.product-images.destroy', $img) }}"
+                                        data-confirm="Hapus gambar ini?">
+                                    Hapus
+                                </button>
                             </div>
                         @endforeach
                     </div>

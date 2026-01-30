@@ -43,6 +43,8 @@ class ProductController extends Controller
                 'is_active' => ['nullable', 'boolean'],
                 'images.*' => ['nullable', 'image', 'max:2048'],
                 'sort_orders.*' => ['nullable', 'integer', 'min:0', 'max:10000'],
+                'existing_sort_orders.*' => ['nullable', 'integer', 'min:0', 'max:10000'],
+                'existing_files.*' => ['nullable', 'image', 'max:2048'],
             ]
         )->validate();
 
@@ -103,6 +105,25 @@ class ProductController extends Controller
         $data['is_active'] = $request->boolean('is_active');
 
         $product->update($data);
+
+        // update existing sort orders and replacements
+        $existingOrders = $request->input('existing_sort_orders', []);
+        foreach ($existingOrders as $imgId => $order) {
+            $img = $product->images()->where('id', $imgId)->first();
+            if ($img) {
+                $img->update(['sort_order' => (int)$order]);
+            }
+        }
+
+        $existingFiles = $request->file('existing_files', []);
+        foreach ($existingFiles as $imgId => $file) {
+            $img = $product->images()->where('id', $imgId)->first();
+            if ($img && $file) {
+                Storage::disk('public')->delete($img->file_path);
+                $path = $file->store('assets/images/products/gallery', 'public');
+                $img->update(['file_path' => $path]);
+            }
+        }
 
         $images = $request->file('images', []);
         $orders = $request->input('sort_orders', []);
