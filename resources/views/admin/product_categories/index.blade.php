@@ -21,6 +21,7 @@
                 <thead class="bg-slate-900 text-slate-400">
                     <tr class="border-b border-slate-800">
                         <th class="px-4 py-3 text-left">#</th>
+                        <th class="px-4 py-3 text-left">Urutan</th>
                         <th class="px-4 py-3 text-left">Nama &amp; Gambar</th>
                         <th class="px-4 py-3 text-left">Deskripsi</th>
                         <th class="px-4 py-3 text-left">Aktif</th>
@@ -32,6 +33,14 @@
                     @forelse($categories as $index => $category)
                         <tr class="hover:bg-slate-800/50">
                             <td class="px-4 py-3">{{ $categories->firstItem() + $index }}</td>
+                            <td class="px-4 py-3">
+                                <form action="{{ route('admin.product-categories.update-order', $category) }}" method="POST" class="flex items-center gap-2">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="number" name="sort_order" value="{{ $category->sort_order }}" min="0" class="w-20 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100">
+                                    <button class="rounded-lg border border-slate-700 px-2 py-1 text-xs font-semibold text-slate-100 hover:border-sky-500/60">Simpan</button>
+                                </form>
+                            </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center gap-3">
                                     @if($category->image)
@@ -74,7 +83,7 @@
             </table>
         </div>
         <div class="border-t border-slate-800 px-4 py-3 flex justify-end">
-            {{ $categories->links() }}
+            {{ $categories->appends(request()->only('search'))->links() }}
         </div>
     </div>
 @endsection

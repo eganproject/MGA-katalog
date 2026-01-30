@@ -18,7 +18,7 @@
 
     <form action="{{ route('admin.product-categories.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
         @csrf
-        @include('admin.product_categories._form')
+        @include('admin.product_categories._form', ['category' => new \App\Models\ProductCategory()])
     </form>
 @endsection
 

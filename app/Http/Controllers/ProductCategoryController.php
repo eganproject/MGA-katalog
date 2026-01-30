@@ -28,11 +28,13 @@ class ProductCategoryController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $slug = Str::slug($request->input('name', ''));
+        $payload = $request->all() + ['slug' => $slug];
         $data = Validator::make(
-            $request->all() + ['slug' => $slug],
+            $payload,
             [
                 'name' => ['required', 'string', 'max:255'],
                 'slug' => ['required', 'string', 'max:255', Rule::unique('product_categories', 'slug')],
+                'sort_order' => ['required', 'integer', 'min:0', 'max:10000'],
                 'image' => ['nullable', 'image', 'max:2048'],
                 'description' => ['nullable', 'string'],
                 'is_active' => ['nullable', 'boolean'],
@@ -56,11 +58,13 @@ class ProductCategoryController extends Controller
     public function update(Request $request, ProductCategory $product_category): RedirectResponse
     {
         $slug = Str::slug($request->input('name', ''));
+        $payload = $request->all() + ['slug' => $slug];
         $data = Validator::make(
-            $request->all() + ['slug' => $slug],
+            $payload,
             [
                 'name' => ['required', 'string', 'max:255'],
                 'slug' => ['required', 'string', 'max:255', Rule::unique('product_categories', 'slug')->ignore($product_category->id)],
+                'sort_order' => ['required', 'integer', 'min:0', 'max:10000'],
                 'image' => ['nullable', 'image', 'max:2048'],
                 'description' => ['nullable', 'string'],
                 'is_active' => ['nullable', 'boolean'],
@@ -88,5 +92,16 @@ class ProductCategoryController extends Controller
         $product_category->delete();
 
         return back()->with('status', 'Kategori dihapus.');
+    }
+
+    public function updateOrder(Request $request, ProductCategory $product_category): RedirectResponse
+    {
+        $data = $request->validate([
+            'sort_order' => ['required', 'integer', 'min:0', 'max:10000'],
+        ]);
+
+        $product_category->update($data);
+
+        return back()->with('status', 'Urutan kategori diperbarui.');
     }
 }

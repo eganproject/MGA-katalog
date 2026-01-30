@@ -89,126 +89,33 @@
 
             <!-- CATEGORY GRID -->
             <div id="categoryGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Category 1: Interactive Panel -->
-                <a href="category_page.html" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-brand-200 shadow-lg hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in">
-                    <!-- Image Container -->
-                    <div class="h-48 w-full flex items-center justify-center mb-6 relative">
-                         <!-- Glow effect behind image -->
-                         <div class="absolute inset-0 bg-brand-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
-                         <!-- PNG Image dengan Animasi Floating -->
-                         <img src="assets/gambar/kategori/kat1.png" alt="Interactive Panel" class="h-full w-auto object-contain drop-shadow-md animate-float relative z-10">
-                    </div>
-                    
-                    <!-- Title (Centered) -->
-                    <div class="text-center mb-4 flex-grow flex items-center justify-center">
-                        <h3 class="font-display text-2xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">Interactive Panel</h3>
-                    </div>
-
-                    <!-- Footer -->
-                    <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between w-full">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">6 Produk</span>
-                        <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
-                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                @forelse($categories as $idx => $cat)
+                    <a href="#{{ $cat->slug }}" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-brand-200 shadow-lg hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: {{ $idx*100 }}ms;">
+                        <div class="h-48 w-full flex items-center justify-center mb-6 relative">
+                             <div class="absolute inset-0 bg-brand-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
+                             @if($cat->image)
+                                <img src="{{ asset('storage/'.$cat->image) }}" alt="{{ $cat->name }}" class="h-full w-auto object-contain drop-shadow-md animate-float relative z-10">
+                             @else
+                                <div class="h-32 w-32 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-xl animate-float relative z-10">{{ strtoupper(substr($cat->name,0,2)) }}</div>
+                             @endif
                         </div>
-                    </div>
-                </a>
-
-                <!-- Category 2: Mobile Signage -->
-                <a href="category_page.html" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-purple-200 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: 100ms;">
-                    <div class="h-48 w-full flex items-center justify-center mb-6 relative">
-                         <div class="absolute inset-0 bg-purple-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
-                         <img src="assets/gambar/kategori/kat2.png" alt="Mobile Signage" class="h-full w-auto object-contain drop-shadow-md animate-float relative z-10" style="animation-delay: 1s;">
-                    </div>
-
-                    <div class="text-center mb-4 flex-grow flex items-center justify-center">
-                        <h3 class="font-display text-2xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">Mobile Signage</h3>
-                    </div>
-
-                    <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between w-full">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">4 Produk</span>
-                        <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-purple-50 group-hover:text-purple-600 transition-colors">
-                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                        <div class="text-center mb-4 flex-grow flex items-center justify-center">
+                            <h3 class="font-display text-2xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">{{ $cat->name }}</h3>
                         </div>
-                    </div>
-                </a>
-
-                <!-- Category 3: Digital Signage -->
-                <a href="category_page.html" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-orange-200 shadow-lg hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: 200ms;">
-                    <div class="h-48 w-full flex items-center justify-center mb-6 relative">
-                         <div class="absolute inset-0 bg-orange-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
-                         <img src="assets/gambar/kategori/kat3.png" alt="Digital Signage" class="h-full w-auto object-contain drop-shadow-md animate-float relative z-10" style="animation-delay: 2s;">
-                    </div>
-
-                    <div class="text-center mb-4 flex-grow flex items-center justify-center">
-                        <h3 class="font-display text-2xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">Digital Signage</h3>
-                    </div>
-
-                    <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between w-full">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">8 Produk</span>
-                        <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-orange-50 group-hover:text-orange-600 transition-colors">
-                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                        <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between w-full">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ $cat->is_active ? 'Aktif' : 'Nonaktif' }}</span>
+                            <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                                <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                @empty
+                    <div class="col-span-3 text-center text-slate-500">Belum ada kategori.</div>
+                @endforelse
+            </div>
 
-                <!-- Category 4: Videotron LED -->
-                <a href="category_page.html" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-green-200 shadow-lg hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: 300ms;">
-                    <div class="h-48 w-full flex items-center justify-center mb-6 relative">
-                         <div class="absolute inset-0 bg-green-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
-                         <img src="assets/gambar/kategori/kat2.png" alt="Videotron LED" class="h-full w-auto object-contain drop-shadow-md animate-float relative z-10" style="animation-delay: 1.5s;">
-                    </div>
-
-                    <div class="text-center mb-4 flex-grow flex items-center justify-center">
-                        <h3 class="font-display text-2xl font-bold text-slate-900 group-hover:text-green-600 transition-colors">Videotron LED</h3>
-                    </div>
-
-                    <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between w-full">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">5 Produk</span>
-                        <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-green-50 group-hover:text-green-600 transition-colors">
-                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Category 5: Kiosk System -->
-                <a href="category_page.html" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-red-200 shadow-lg hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: 400ms;">
-                    <div class="h-48 w-full flex items-center justify-center mb-6 relative">
-                         <div class="absolute inset-0 bg-red-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
-                         <img src="assets/gambar/kategori/kat3.png" alt="Kiosk System" class="h-full w-auto object-contain drop-shadow-md animate-float relative z-10" style="animation-delay: 0.5s;">
-                    </div>
-
-                    <div class="text-center mb-4 flex-grow flex items-center justify-center">
-                        <h3 class="font-display text-2xl font-bold text-slate-900 group-hover:text-red-600 transition-colors">Kiosk System</h3>
-                    </div>
-
-                    <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between w-full">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">3 Produk</span>
-                        <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-red-50 group-hover:text-red-600 transition-colors">
-                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Category 6: Aksesoris -->
-                <a href="category_page.html" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-slate-400 shadow-lg hover:shadow-2xl hover:shadow-slate-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: 500ms;">
-                    <div class="h-48 w-full flex items-center justify-center mb-6 relative">
-                         <div class="absolute inset-0 bg-slate-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
-                         <img src="assets/gambar/kategori/kat1.png" alt="Aksesoris" class="h-full w-auto object-contain drop-shadow-md animate-float relative z-10" style="animation-delay: 2.5s;">
-                    </div>
-
-                    <div class="text-center mb-4 flex-grow flex items-center justify-center">
-                        <h3 class="font-display text-2xl font-bold text-slate-900 group-hover:text-slate-600 transition-colors">Aksesoris</h3>
-                    </div>
-
-                    <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between w-full">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">12 Produk</span>
-                        <div class="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-slate-200 group-hover:text-slate-700 transition-colors">
-                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
-                        </div>
-                    </div>
-                </a>
-
+            <div class="mt-10 flex justify-center">
+                {{ $categories->links() }}
             </div>
         </div>
     </section>

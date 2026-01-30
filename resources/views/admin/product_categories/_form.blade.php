@@ -1,4 +1,5 @@
 @php
+    $category = $category ?? new \App\Models\ProductCategory();
     $slugPreview = old('name')
         ? Str::slug(old('name'))
         : ($category->slug ?? Str::slug($category->name ?? ''));
@@ -22,6 +23,12 @@
         <div class="space-y-2">
             <label for="description" class="block text-sm font-semibold text-slate-200">Deskripsi</label>
             <textarea id="description" name="description" rows="5" class="w-full rounded-xl border border-slate-700 bg-slate-800/70 px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:outline-none">{{ old('description', $category->description ?? '') }}</textarea>
+        </div>
+
+        <div class="space-y-2">
+            <label for="sort_order" class="block text-sm font-semibold text-slate-200">Urutan</label>
+            <input id="sort_order" name="sort_order" type="number" min="0" value="{{ old('sort_order', $category->sort_order ?? 0) }}" class="w-32 rounded-xl border border-slate-700 bg-slate-800/70 px-3 py-2 text-slate-100 focus:border-sky-500 focus:outline-none">
+            <p class="text-xs text-slate-400">Angka kecil ditampilkan lebih dahulu.</p>
         </div>
     </div>
 

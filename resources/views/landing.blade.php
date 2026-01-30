@@ -238,51 +238,31 @@
                 <!-- KOLOM KANAN: 3 Card Estetik -->
                 <div class="lg:col-span-8">
                     <div class="grid md:grid-cols-3 gap-6">
-                        <!-- Card 1 -->
-                        <div class="reveal-item delay-100 group relative">
-                            <div class="relative bg-white/60 backdrop-blur-md border border-white/80 h-[28rem] rounded-t-full rounded-b-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden transition-all duration-500 hover:shadow-brand-500/20 hover:-translate-y-2 flex flex-col items-center justify-between p-6 pb-8">
-                                <div class="absolute inset-0 bg-gradient-to-b from-brand-50/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                                <div class="relative w-full flex-grow flex items-center justify-center mt-4">
-                                    <div class="absolute w-40 h-40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/5732/5732328.png" alt="Interactive Flat Panel" class="relative z-10 w-40 h-40 object-contain drop-shadow-xl animate-float">
+                        @forelse(($featuredCategories ?? []) as $i => $feat)
+                            @php
+                                $delay = ($i+1) * 100;
+                                $cat = $feat->category;
+                            @endphp
+                            <div class="reveal-item delay-{{ $delay }} group relative">
+                                <div class="relative bg-white/60 backdrop-blur-md border border-white/80 h-[28rem] rounded-t-full rounded-b-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden transition-all duration-500 hover:shadow-brand-500/20 hover:-translate-y-2 flex flex-col items-center justify-between p-6 pb-8">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-brand-50/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                                    <div class="relative w-full flex-grow flex items-center justify-center mt-4">
+                                        <div class="absolute w-40 h-40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
+                                        @if($cat?->image)
+                                            <img src="{{ asset('storage/'.$cat->image) }}" alt="{{ $cat->name }}" class="relative z-10 w-40 h-40 object-contain drop-shadow-xl animate-float">
+                                        @else
+                                            <div class="relative z-10 w-32 h-32 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold uppercase animate-float">{{ strtoupper(substr($cat->name ?? 'X',0,2)) }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="text-center relative z-10 w-full">
+                                        <h4 class="text-xl font-display font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">{{ $cat?->name ?? 'Kategori' }}</h4>
+                                        <a href="{{ route('kategori') }}#{{ $cat?->slug }}" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
+                                    </div>
                                 </div>
-                                <div class="text-center relative z-10 w-full">
-                                    <h4 class="text-xl font-display font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">Interactive Panel</h4>
-                                    <a href="#" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
-                                </div>
-                                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L0,50 Q0,0 50,0 Q100,0 100,50 L100,100" fill="none" stroke="url(#grad1)" stroke-width="2" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300" vector-effect="non-scaling-stroke" /><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#21939F;stop-opacity:0" /><stop offset="50%" style="stop-color:#21939F;stop-opacity:1" /><stop offset="100%" style="stop-color:#21939F;stop-opacity:0" /></linearGradient></defs></svg>
                             </div>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="reveal-item delay-200 group relative md:translate-y-8">
-                            <div class="relative bg-white/60 backdrop-blur-md border border-white/80 h-[28rem] rounded-t-full rounded-b-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden transition-all duration-500 hover:shadow-brand-500/20 hover:-translate-y-2 flex flex-col items-center justify-between p-6 pb-8">
-                                <div class="absolute inset-0 bg-gradient-to-b from-brand-50/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                                <div class="relative w-full flex-grow flex items-center justify-center mt-4">
-                                    <div class="absolute w-40 h-40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/12144/12144793.png" alt="Smart Mobile Signage" class="relative z-10 w-40 h-40 object-contain drop-shadow-xl animate-float-delayed">
-                                </div>
-                                <div class="text-center relative z-10 w-full">
-                                    <h4 class="text-xl font-display font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">Mobile Signage</h4>
-                                    <a href="#" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
-                                </div>
-                                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L0,50 Q0,0 50,0 Q100,0 100,50 L100,100" fill="none" stroke="url(#grad2)" stroke-width="2" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300" vector-effect="non-scaling-stroke" /><defs><linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#21939F;stop-opacity:0" /><stop offset="50%" style="stop-color:#21939F;stop-opacity:1" /><stop offset="100%" style="stop-color:#21939F;stop-opacity:0" /></linearGradient></defs></svg>
-                            </div>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="reveal-item delay-300 group relative">
-                            <div class="relative bg-white/60 backdrop-blur-md border border-white/80 h-[28rem] rounded-t-full rounded-b-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden transition-all duration-500 hover:shadow-brand-500/20 hover:-translate-y-2 flex flex-col items-center justify-between p-6 pb-8">
-                                <div class="absolute inset-0 bg-gradient-to-b from-brand-50/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                                <div class="relative w-full flex-grow flex items-center justify-center mt-4">
-                                    <div class="absolute w-40 h-40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3067/3067304.png" alt="Digital Signage" class="relative z-10 w-40 h-40 object-contain drop-shadow-xl animate-float">
-                                </div>
-                                <div class="text-center relative z-10 w-full">
-                                    <h4 class="text-xl font-display font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">Digital Signage</h4>
-                                    <a href="#" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
-                                </div>
-                                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L0,50 Q0,0 50,0 Q100,0 100,50 L100,100" fill="none" stroke="url(#grad3)" stroke-width="2" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300" vector-effect="non-scaling-stroke" /><defs><linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#21939F;stop-opacity:0" /><stop offset="50%" style="stop-color:#21939F;stop-opacity:1" /><stop offset="100%" style="stop-color:#21939F;stop-opacity:0" /></linearGradient></defs></svg>
-                            </div>
-                        </div>
+                        @empty
+                            <div class="col-span-3 text-slate-500 text-sm">Belum ada kategori unggulan yang dipilih.</div>
+                        @endforelse
                     </div>
                 </div>
             </div>

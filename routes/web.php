@@ -5,11 +5,10 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\FeaturedCategoryController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('landing');
-})->name('landing');
+Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -23,13 +22,14 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('product-categories', ProductCategoryController::class)->except(['show']);
+        Route::put('product-categories/{product_category}/order', [ProductCategoryController::class, 'updateOrder'])->name('product-categories.update-order');
         Route::resource('products', ProductController::class)->except(['show']);
         Route::delete('product-images/{product_image}', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
         Route::resource('featured-categories', FeaturedCategoryController::class)->only(['index','store','update','destroy']);
     });
 });
 
-// Halaman landing juga bisa diakses via /landing jika diperlukan
-Route::view('/landing', 'landing');
-Route::view('/kategori', 'kategori');
-Route::view('/tentang', 'tentang');
+// Halaman publik
+Route::get('/landing', [LandingController::class, 'index']);
+Route::get('/kategori', [LandingController::class, 'kategori'])->name('kategori');
+Route::get('/tentang', [LandingController::class, 'tentang'])->name('tentang');
