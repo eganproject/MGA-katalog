@@ -170,31 +170,31 @@
 
         <div class="relative z-20 w-full pb-12 pt-8">
             <div class="max-w-full mx-auto text-center">
-                <p class="text-xs font-bold text-slate-300 uppercase tracking-[0.3em] mb-8 opacity-70">Dipercaya Oleh Pemimpin Industri</p>
+                <p class="text-xs font-bold text-slate-300 uppercase tracking-[0.3em] mb-8 opacity-70">Dipercaya Oleh </p>
                 <div class="logo-marquee-container">
                     <div class="logo-marquee-content items-center transition-opacity duration-500">
                         <div class="flex gap-16 items-center shrink-0 pr-16">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=AQUA" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="https://placehold.co/100x50/transparent/FFFFFF?text=OJK" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="https://placehold.co/100x50/transparent/FFFFFF?text=SIG" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="https://placehold.co/180x50/transparent/FFFFFF?text=Plaza+INDONESIA" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="https://placehold.co/180x50/transparent/FFFFFF?text=INDONESIA+POWER" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=BANK+BCA" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=TELKOMSEL" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=PERTAMINA" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=MANDIRI" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/1.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/2.png') }}" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/3.png') }}" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/4.png') }}" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/5.png') }}" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/6.png') }}" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/7.png') }}" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/8.png') }}" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/9.png') }}" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
                         </div>
                         <!-- Duplikat untuk Marquee Loop -->
                         <div class="flex gap-16 items-center shrink-0 pr-16">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=AQUA" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="https://placehold.co/100x50/transparent/FFFFFF?text=OJK" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="https://placehold.co/100x50/transparent/FFFFFF?text=SIG" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="https://placehold.co/180x50/transparent/FFFFFF?text=Plaza+INDONESIA" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="https://placehold.co/180x50/transparent/FFFFFF?text=INDONESIA+POWER" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=BANK+BCA" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=TELKOMSEL" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=PERTAMINA" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="https://placehold.co/120x50/transparent/FFFFFF?text=MANDIRI" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/1.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/2.png') }}" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/3.png') }}" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/4.png') }}" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/5.png') }}" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/6.png') }}" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/7.png') }}" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/8.png') }}" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('assets/brand_partner/9.png') }}" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
                         </div>
                     </div>
                 </div>
