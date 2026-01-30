@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\ProductImage;
 
 class AuthController extends Controller
 {
@@ -43,7 +46,17 @@ class AuthController extends Controller
      */
     public function admin()
     {
-        return view('admin.index');
+        $stats = [
+            'products' => Product::count(),
+            'products_active' => Product::where('is_active', true)->count(),
+            'categories' => ProductCategory::count(),
+            'images' => ProductImage::count(),
+        ];
+
+        $latestProducts = Product::with('category')->latest()->take(5)->get();
+        $latestCategories = ProductCategory::latest()->take(5)->get();
+
+        return view('admin.index', compact('stats', 'latestProducts', 'latestCategories'));
     }
 
     /**

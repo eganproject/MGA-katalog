@@ -6,26 +6,33 @@
         <h1 class="text-2xl font-semibold">Dashboard</h1>
     </div>
 
-    <div class="grid gap-4 md:grid-cols-3">
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl shadow-slate-900/50">
-            <p class="text-sm text-slate-400">Pengguna Aktif</p>
+            <p class="text-sm text-slate-400">Total Produk</p>
             <div class="mt-2 flex items-end justify-between">
-                <span class="text-3xl font-bold">1,284</span>
-                <span class="text-emerald-400 text-sm font-semibold">▲ 12% vs minggu lalu</span>
+                <span class="text-3xl font-bold">{{ $stats['products'] }}</span>
+                <span class="text-xs text-slate-500">semua produk</span>
             </div>
         </div>
         <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl shadow-slate-900/50">
-            <p class="text-sm text-slate-400">Transaksi</p>
+            <p class="text-sm text-slate-400">Produk Aktif</p>
             <div class="mt-2 flex items-end justify-between">
-                <span class="text-3xl font-bold">Rp 842 jt</span>
-                <span class="text-emerald-400 text-sm font-semibold">▲ 6.3% MoM</span>
+                <span class="text-3xl font-bold text-emerald-300">{{ $stats['products_active'] }}</span>
+                <span class="text-xs text-slate-500">dapat dilihat pengguna</span>
             </div>
         </div>
         <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl shadow-slate-900/50">
-            <p class="text-sm text-slate-400">Ticket Support</p>
+            <p class="text-sm text-slate-400">Kategori</p>
             <div class="mt-2 flex items-end justify-between">
-                <span class="text-3xl font-bold">32</span>
-                <span class="text-rose-400 text-sm font-semibold">▼ 4 ticket</span>
+                <span class="text-3xl font-bold">{{ $stats['categories'] }}</span>
+                <span class="text-xs text-slate-500">grup produk</span>
+            </div>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl shadow-slate-900/50">
+            <p class="text-sm text-slate-400">Total Gambar</p>
+            <div class="mt-2 flex items-end justify-between">
+                <span class="text-3xl font-bold">{{ $stats['images'] }}</span>
+                <span class="text-xs text-slate-500">galeri</span>
             </div>
         </div>
     </div>
@@ -34,53 +41,38 @@
         <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl shadow-slate-900/50">
             <div class="flex items-center justify-between mb-4">
                 <div>
-                    <h3 class="text-lg font-semibold">Aktivitas Terbaru</h3>
-                    <p class="text-xs text-slate-500">24h terakhir</p>
+                    <h3 class="text-lg font-semibold">Produk Terbaru</h3>
+                    <p class="text-xs text-slate-500">5 entri terakhir</p>
                 </div>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full text-sm">
                     <thead class="text-slate-400">
                         <tr class="border-b border-slate-800">
-                            <th class="py-2 pr-4 text-left">Waktu</th>
-                            <th class="py-2 pr-4 text-left">Pengguna</th>
-                            <th class="py-2 pr-4 text-left">Aksi</th>
-                            <th class="py-2 text-left">Status</th>
+                            <th class="py-2 pr-4 text-left">Produk</th>
+                            <th class="py-2 pr-4 text-left">Kategori</th>
+                            <th class="py-2 pr-4 text-left">Status</th>
+                            <th class="py-2 text-left">Dibuat</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-800">
-                        <tr>
-                            <td class="py-2 pr-4">09:24</td>
-                            <td class="py-2 pr-4">Rani Pratama</td>
-                            <td class="py-2 pr-4 text-slate-300">Upload dokumen kontrak</td>
-                            <td class="py-2">
-                                <span class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300">Sukses</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 pr-4">08:51</td>
-                            <td class="py-2 pr-4">Andi Putra</td>
-                            <td class="py-2 pr-4 text-slate-300">Update profil perusahaan</td>
-                            <td class="py-2">
-                                <span class="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-semibold text-blue-200">Diproses</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 pr-4">08:10</td>
-                            <td class="py-2 pr-4">Dewi Lestari</td>
-                            <td class="py-2 pr-4 text-slate-300">Membuat tiket support</td>
-                            <td class="py-2">
-                                <span class="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-200">Menunggu</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 pr-4">07:42</td>
-                            <td class="py-2 pr-4">Rudi Hartono</td>
-                            <td class="py-2 pr-4 text-slate-300">Menambah user baru</td>
-                            <td class="py-2">
-                                <span class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300">Sukses</span>
-                            </td>
-                        </tr>
+                        @forelse($latestProducts as $prod)
+                            <tr>
+                                <td class="py-2 pr-4 text-slate-200">
+                                    <div class="font-semibold">{{ $prod->name }}</div>
+                                    <div class="text-xs text-slate-500">/{{ $prod->slug }}</div>
+                                </td>
+                                <td class="py-2 pr-4 text-slate-300">{{ $prod->category?->name ?? '-' }}</td>
+                                <td class="py-2 pr-4">
+                                    <span class="rounded-full px-3 py-1 text-xs font-semibold {{ $prod->is_active ? 'bg-emerald-500/20 text-emerald-200' : 'bg-amber-500/20 text-amber-200' }}">
+                                        {{ $prod->is_active ? 'Aktif' : 'Nonaktif' }}
+                                    </span>
+                                </td>
+                                <td class="py-2 text-slate-400 text-xs">{{ $prod->created_at?->format('d M Y') }}</td>
+                            </tr>
+                        @empty
+                            <tr><td colspan="4" class="py-4 text-center text-slate-500">Belum ada produk.</td></tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -89,18 +81,39 @@
         <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl shadow-slate-900/50">
             <div class="flex items-center justify-between mb-4">
                 <div>
-                    <h3 class="text-lg font-semibold">Quick Actions</h3>
-                    <p class="text-xs text-slate-500">Shortcut harian</p>
+                    <h3 class="text-lg font-semibold">Kategori Terbaru</h3>
+                    <p class="text-xs text-slate-500">5 entri terakhir</p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-2">
-                @foreach(['Tambah User','Unggah Dokumen','Buat Invoice','Export CSV','Setel Notifikasi','Mode Audit'] as $action)
-                    <button class="rounded-xl border border-slate-800 bg-slate-800/70 px-3 py-2 text-sm font-semibold text-slate-100 hover:border-sky-500/60 hover:text-white transition">
-                        {{ $action }}
-                    </button>
-                @endforeach
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm">
+                    <thead class="text-slate-400">
+                        <tr class="border-b border-slate-800">
+                            <th class="py-2 pr-4 text-left">Kategori</th>
+                            <th class="py-2 pr-4 text-left">Status</th>
+                            <th class="py-2 text-left">Dibuat</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800">
+                        @forelse($latestCategories as $cat)
+                            <tr>
+                                <td class="py-2 pr-4 text-slate-200">
+                                    <div class="font-semibold">{{ $cat->name }}</div>
+                                    <div class="text-xs text-slate-500">/{{ $cat->slug }}</div>
+                                </td>
+                                <td class="py-2 pr-4">
+                                    <span class="rounded-full px-3 py-1 text-xs font-semibold {{ $cat->is_active ? 'bg-emerald-500/20 text-emerald-200' : 'bg-amber-500/20 text-amber-200' }}">
+                                        {{ $cat->is_active ? 'Aktif' : 'Nonaktif' }}
+                                    </span>
+                                </td>
+                                <td class="py-2 text-slate-400 text-xs">{{ $cat->created_at?->format('d M Y') }}</td>
+                            </tr>
+                        @empty
+                            <tr><td colspan="3" class="py-4 text-center text-slate-500">Belum ada kategori.</td></tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
-            <p class="mt-4 text-sm text-slate-400">Gunakan aksi cepat untuk mempercepat pekerjaan rutin Anda.</p>
         </div>
     </div>
 @endsection
