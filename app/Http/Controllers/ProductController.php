@@ -17,9 +17,24 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::with(['category', 'images'])->latest()->paginate(10);
+        $query = Product::with(['category', 'images']);
 
-        return view('admin.products.index', compact('products'));
+        if ($search = request('q')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('slug', 'like', "%{$search}%")
+                  ->orWhere('excerpt', 'like', "%{$search}%");
+            });
+        }
+
+        if ($categoryId = request('category_id')) {
+            $query->where('product_category_id', $categoryId);
+        }
+
+        $products = $query->latest()->paginate(10)->withQueryString();
+        $categories = ProductCategory::orderBy('name')->get();
+
+        return view('admin.products.index', compact('products', 'categories'));
     }
 
     public function create(): View
