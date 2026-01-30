@@ -25,6 +25,10 @@
                class="flex items-center gap-3 px-3 py-2 rounded-xl {{ request()->routeIs('admin.products.*') ? 'bg-slate-800 text-white border border-sky-500/40' : 'hover:bg-slate-800 text-slate-200' }}">
                 Produk
             </a>
+            <a href="{{ route('admin.featured-categories.index') }}"
+               class="flex items-center gap-3 px-3 py-2 rounded-xl {{ request()->routeIs('admin.featured-categories.*') ? 'bg-slate-800 text-white border border-sky-500/40' : 'hover:bg-slate-800 text-slate-200' }}">
+                Kategori Unggulan
+            </a>
             {{-- <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Pages</a>
             <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Media</a> --}}
         </div>

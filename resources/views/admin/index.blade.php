@@ -29,10 +29,10 @@
             </div>
         </div>
         <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl shadow-slate-900/50">
-            <p class="text-sm text-slate-400">Total Gambar</p>
+            <p class="text-sm text-slate-400">Kategori Unggulan</p>
             <div class="mt-2 flex items-end justify-between">
-                <span class="text-3xl font-bold">{{ $stats['images'] }}</span>
-                <span class="text-xs text-slate-500">galeri</span>
+                <span class="text-3xl font-bold">{{ $stats['featured'] ?? 0 }}</span>
+                <span class="text-xs text-slate-500">slot beranda</span>
             </div>
         </div>
     </div>

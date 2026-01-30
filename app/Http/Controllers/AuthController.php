@@ -51,6 +51,7 @@ class AuthController extends Controller
             'products_active' => Product::where('is_active', true)->count(),
             'categories' => ProductCategory::count(),
             'images' => ProductImage::count(),
+            'featured' => \App\Models\FeaturedCategory::count(),
         ];
 
         $latestProducts = Product::with('category')->latest()->take(5)->get();

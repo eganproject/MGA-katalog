@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
+use App\Http\Controllers\FeaturedCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('product-categories', ProductCategoryController::class)->except(['show']);
         Route::resource('products', ProductController::class)->except(['show']);
         Route::delete('product-images/{product_image}', [ProductImageController::class, 'destroy'])->name('product-images.destroy');
+        Route::resource('featured-categories', FeaturedCategoryController::class)->only(['index','store','update','destroy']);
     });
 });
 
