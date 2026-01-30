@@ -88,9 +88,9 @@
             </div>
 
             <!-- CATEGORY GRID -->
-            <div id="categoryGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="categoryGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @forelse($categories as $idx => $cat)
-                    <a href="#{{ $cat->slug }}" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-brand-200 shadow-lg hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: {{ $idx*100 }}ms;">
+                    <a href="{{ route('kategori.show', $cat->slug) }}" class="category-card group relative bg-white rounded-[2.5rem] p-8 border border-slate-200 hover:border-brand-200 shadow-lg hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full animate-pop-in" style="animation-delay: {{ $idx*100 }}ms;">
                         <div class="h-48 w-full flex items-center justify-center mb-6 relative">
                              <div class="absolute inset-0 bg-brand-500/5 blur-2xl rounded-full scale-50 group-hover:scale-100 transition-transform duration-500"></div>
                              @if($cat->image)

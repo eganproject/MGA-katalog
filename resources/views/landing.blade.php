@@ -226,7 +226,7 @@
                     <p class="text-slate-600 text-lg leading-relaxed mb-8">
                         Jelajahi berbagai solusi visual display yang dirancang dengan estetika tinggi untuk memaksimalkan dampak komunikasi bisnis Anda.
                     </p>
-                    <a href="#catalog" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-brand-600 rounded-full hover:bg-brand-700 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 group">
+                    <a href="/kategori" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-brand-600 rounded-full hover:bg-brand-700 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 group">
                         Lihat Semua Kategori
                         <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1"></i>
                     </a>
@@ -256,7 +256,9 @@
                                     </div>
                                     <div class="text-center relative z-10 w-full">
                                         <h4 class="text-xl font-display font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">{{ $cat?->name ?? 'Kategori' }}</h4>
-                                        <a href="{{ route('kategori') }}#{{ $cat?->slug }}" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
+                                        @if($cat)
+                                            <a href="{{ route('kategori.show', $cat->slug) }}" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

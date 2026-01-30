@@ -29,4 +29,11 @@ class LandingController extends Controller
     {
         return view('tentang');
     }
+
+    public function kategoriShow(string $slug): View
+    {
+        $category = ProductCategory::where('slug', $slug)->where('is_active', true)->firstOrFail();
+
+        return view('kategori-detail', compact('category'));
+    }
 }
