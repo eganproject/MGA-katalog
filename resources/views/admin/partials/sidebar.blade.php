@@ -25,14 +25,14 @@
                class="flex items-center gap-3 px-3 py-2 rounded-xl {{ request()->routeIs('admin.products.*') ? 'bg-slate-800 text-white border border-sky-500/40' : 'hover:bg-slate-800 text-slate-200' }}">
                 Produk
             </a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Pages</a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Media</a>
+            {{-- <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Pages</a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Media</a> --}}
         </div>
-        <div>
+        {{-- <div>
             <p class="text-xs uppercase tracking-wide text-slate-500 mb-2">System</p>
             <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Settings</a>
             <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-800 text-slate-200">Integrations</a>
-        </div>
+        </div> --}}
     </nav>
 
     <div class="mt-auto rounded-2xl border border-slate-800 bg-slate-800/70 px-4 py-3 text-sm text-slate-300">
