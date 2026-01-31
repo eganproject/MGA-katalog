@@ -80,4 +80,14 @@ class LandingController extends Controller
             'search' => $request->get('q', ''),
         ]);
     }
+
+    public function productShow(string $slug): View
+    {
+        $product = Product::with(['category', 'images'])
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        return view('produk-detail', compact('product'));
+    }
 }

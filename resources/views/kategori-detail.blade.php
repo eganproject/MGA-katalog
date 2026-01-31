@@ -120,7 +120,7 @@
             <!-- Products Grid (With ID for filtering) -->
             <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
                 @forelse($products as $product)
-                    <a href="#" class="product-item group cursor-pointer block">
+                    <a href="{{ route('produk.show', $product->slug) }}" class="product-item group cursor-pointer block">
                         <div class="relative aspect-[4/3] flex items-center justify-center mb-6 overflow-visible">
                             @if($product->thumbnail)
                                 <img src="{{ asset('storage/'.$product->thumbnail) }}" alt="{{ $product->name }}" class="w-full h-full object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-xl">

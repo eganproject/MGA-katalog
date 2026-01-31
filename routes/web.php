@@ -33,4 +33,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/landing', [LandingController::class, 'index']);
 Route::get('/kategori', [LandingController::class, 'kategori'])->name('kategori');
 Route::get('/kategori/{slug}', [LandingController::class, 'kategoriShow'])->name('kategori.show');
+Route::get('/produk/{slug}', [LandingController::class, 'productShow'])->name('produk.show');
 Route::get('/tentang', [LandingController::class, 'tentang'])->name('tentang');
