@@ -80,9 +80,9 @@
                         }
                         $activeImage = $gallery->first();
                     @endphp
-                    <div class="aspect-video bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm">
+                    <div id="main-image-wrapper" class="group aspect-square bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in">
                         @if($activeImage?->file_path)
-                            <img id="main-product-image" src="{{ asset('storage/'.$activeImage->file_path) }}" alt="{{ $activeImage->alt_text ?? $product->name }}" class="w-full h-full object-contain">
+                            <img id="main-product-image" src="{{ asset('storage/'.$activeImage->file_path) }}" alt="{{ $activeImage->alt_text ?? $product->name }}" class="w-full h-full object-contain transition-transform duration-300 ease-out">
                         @else
                             <div class="h-full w-full flex items-center justify-center text-3xl font-display text-slate-400">{{ strtoupper(substr($product->name,0,2)) }}</div>
                         @endif
@@ -141,6 +141,26 @@
 @section('custom_script')
 <script>
     lucide.createIcons();
+
+    // Main image hover zoom following cursor
+    const imgWrapper = document.getElementById('main-image-wrapper');
+    const mainImg = document.getElementById('main-product-image');
+
+    if (imgWrapper && mainImg) {
+        const maxScale = 3;
+        imgWrapper.addEventListener('mousemove', (e) => {
+            const rect = imgWrapper.getBoundingClientRect();
+            const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
+            const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
+            mainImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            mainImg.style.transform = `scale(${maxScale})`;
+        });
+
+        imgWrapper.addEventListener('mouseleave', () => {
+            mainImg.style.transformOrigin = '50% 50%';
+            mainImg.style.transform = 'scale(1)';
+        });
+    }
 
     // Navbar scroll effect
     function updateNavbar() {
