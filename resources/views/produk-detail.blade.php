@@ -201,13 +201,14 @@
     prevBtn?.addEventListener('click', () => setActive(currentIndex - 1));
     nextBtn?.addEventListener('click', () => setActive(currentIndex + 1));
 
-    // Main image hover zoom following cursor (skip when over controls)
+    // Main image hover zoom following cursor (skip when over controls / fullscreen)
     if (imgWrapper && mainImg) {
         const maxScale = 3;
         const isOnControl = (target) => target.closest('#prev-image') || target.closest('#next-image') || target.closest('#fullscreen-image');
 
         imgWrapper.addEventListener('mousemove', (e) => {
             if (isOnControl(e.target)) return; // jangan zoom saat hover controls
+            if (document.fullscreenElement === imgWrapper) return; // jangan zoom saat fullscreen
             const rect = imgWrapper.getBoundingClientRect();
             const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
             const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
@@ -221,6 +222,9 @@
         };
 
         imgWrapper.addEventListener('mouseleave', resetZoom);
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement !== imgWrapper) resetZoom();
+        });
         ['mouseenter', 'mouseleave'].forEach(evt => {
             prevBtn?.addEventListener(evt, resetZoom);
             nextBtn?.addEventListener(evt, resetZoom);
