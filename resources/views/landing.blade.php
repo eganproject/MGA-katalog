@@ -162,7 +162,7 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 w-full justify-center">
                         <a href="#contact" class="px-8 py-4 bg-white text-brand-900 rounded-full font-bold hover:bg-slate-200 transition shadow-xl text-center flex items-center justify-center gap-2">Hubungi Kami</a>
-                        <a href="#catalog" class="px-8 py-4 bg-white/10 border border-white/30 text-white rounded-full font-semibold hover:bg-white/20 transition backdrop-blur-sm text-center flex items-center justify-center gap-2">Lihat Katalog <i data-lucide="download" class="w-4 h-4"></i></a>
+                        <a href="{{ route('kategori') }}" class="px-8 py-4 bg-white/10 border border-white/30 text-white rounded-full font-semibold hover:bg-white/20 transition backdrop-blur-sm text-center flex items-center justify-center gap-2">Lihat Katalog <i data-lucide="download" class="w-4 h-4"></i></a>
                     </div>
                 </div>
             </div>
