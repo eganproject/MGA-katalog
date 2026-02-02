@@ -3,12 +3,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="bg-brand-600 text-white p-2 rounded-lg mr-2">
-                        <i data-lucide="monitor-play" class="w-6 h-6"></i>
-                    </div>
-                    <span class="font-display font-bold text-2xl tracking-tight text-white shadow-sm">M<span class="text-brand-500">GA</span></span>
-                </div>
+                <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center cursor-pointer">
+                    <img src="/assets/images/logo/logo.png" alt="Logo" class="h-10 w-auto object-contain">
+                </a>
 
                 <!-- Menu Tengah (Updated with Mega Menu Split View) -->
                 <div class="hidden md:flex space-x-8 items-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
