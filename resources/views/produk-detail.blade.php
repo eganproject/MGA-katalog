@@ -73,14 +73,19 @@
             <div class="rounded-3xl p-4 md:p-6 relative overflow-visible">
                 <div class="relative z-10">
                     @php
-                        $gallery = $product->images->values();
-                        // If no product_images, fallback to thumbnail only
-                        if ($gallery->isEmpty() && $product->thumbnail) {
-                            $gallery = collect([(object)['file_path' => $product->thumbnail, 'alt_text' => $product->name]]);
+                        // Start with thumbnail (if any), then append product images (ordered by sort_order via relation)
+                        $gallery = collect();
+                        if ($product->thumbnail) {
+                            $gallery->push((object)[
+                                'file_path' => $product->thumbnail,
+                                'alt_text'  => $product->name,
+                            ]);
                         }
+                        $gallery = $gallery->merge($product->images->values());
+                        // Fallback to placeholder if still empty
                         $activeImage = $gallery->first();
                     @endphp
-                    <div id="main-image-wrapper" class="group aspect-square bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in">
+                    <div id="main-image-wrapper" class="group bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in w-[451px] h-[451px] max-w-full mx-auto">
                         @if($activeImage?->file_path)
                             <img id="main-product-image" src="{{ asset('storage/'.$activeImage->file_path) }}" alt="{{ $activeImage->alt_text ?? $product->name }}" class="w-full h-full object-contain transition-transform duration-300 ease-out">
                         @else
@@ -89,9 +94,9 @@
                     </div>
 
                     @if($gallery->count())
-                        <div class="mt-4 flex gap-3 overflow-x-auto pb-1">
+                        <div class="mt-4 flex flex-wrap gap-3 max-w-[451px] mx-auto">
                             @foreach($gallery as $img)
-                                <button class="thumb-btn shrink-0 w-20 h-20 rounded-xl border {{ $loop->first ? 'border-brand-300 ring-2 ring-brand-200' : 'border-slate-200' }} bg-white overflow-hidden" data-src="{{ asset('storage/'.$img->file_path) }}">
+                                <button class="thumb-btn w-[100px] h-[100px] rounded-xl border {{ $loop->first ? 'border-brand-300 ring-2 ring-brand-200' : 'border-slate-200' }} bg-white overflow-hidden" data-src="{{ asset('storage/'.$img->file_path) }}">
                                     <img src="{{ asset('storage/'.$img->file_path) }}" alt="{{ $img->alt_text ?? $product->name }}" class="w-full h-full object-cover">
                                 </button>
                             @endforeach
