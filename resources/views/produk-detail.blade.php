@@ -68,10 +68,10 @@
     ])
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
             <!-- Gallery -->
             <div class="rounded-3xl p-4 md:p-6 relative overflow-visible">
-                <div class="relative z-10">
+                <div class="relative z-10 space-y-4">
                     @php
                         // Start with thumbnail (if any), then append product images (ordered by sort_order via relation)
                         $gallery = collect();
@@ -85,7 +85,7 @@
                         // Fallback to placeholder if still empty
                         $activeImage = $gallery->first();
                     @endphp
-                    <div id="main-image-wrapper" class="group relative bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in w-[451px] h-[451px] max-w-full mx-auto">
+                    <div id="main-image-wrapper" class="group relative bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in w-full h-[320px] sm:h-[360px] md:h-[420px] lg:h-[451px] max-w-full mx-auto">
                         @if($activeImage?->file_path)
                             <img id="main-product-image" src="{{ asset('storage/'.$activeImage->file_path) }}" alt="{{ $activeImage->alt_text ?? $product->name }}" class="w-full h-full object-contain transition-transform duration-300 ease-out">
                         @else
@@ -104,9 +104,9 @@
                     </div>
 
                     @if($gallery->count())
-                        <div class="mt-4 flex flex-wrap gap-3 max-w-[451px] mx-auto">
+                        <div class="mt-2 flex flex-wrap gap-3 max-w-[500px] mx-auto justify-center sm:justify-start">
                             @foreach($gallery as $img)
-                                <button class="thumb-btn w-[100px] h-[100px] rounded-xl border {{ $loop->first ? 'border-brand-300 ring-2 ring-brand-200' : 'border-slate-200' }} bg-white overflow-hidden" data-index="{{ $loop->index }}" data-src="{{ asset('storage/'.$img->file_path) }}" data-alt="{{ $img->alt_text ?? $product->name }}">
+                                <button class="thumb-btn w-[84px] h-[84px] sm:w-[92px] sm:h-[92px] md:w-[100px] md:h-[100px] rounded-xl border {{ $loop->first ? 'border-brand-300 ring-2 ring-brand-200' : 'border-slate-200' }} bg-white overflow-hidden" data-index="{{ $loop->index }}" data-src="{{ asset('storage/'.$img->file_path) }}" data-alt="{{ $img->alt_text ?? $product->name }}">
                                     <img src="{{ asset('storage/'.$img->file_path) }}" alt="{{ $img->alt_text ?? $product->name }}" class="w-full h-full object-cover">
                                 </button>
                             @endforeach
@@ -201,6 +201,18 @@
     prevBtn?.addEventListener('click', () => setActive(currentIndex - 1));
     nextBtn?.addEventListener('click', () => setActive(currentIndex + 1));
 
+    // Swipe support for mobile
+    if (mainImg && ('ontouchstart' in window)) {
+        let startX = 0;
+        mainImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+        mainImg.addEventListener('touchend', (e) => {
+            const delta = e.changedTouches[0].clientX - startX;
+            if (Math.abs(delta) > 40) {
+                delta < 0 ? setActive(currentIndex + 1) : setActive(currentIndex - 1);
+            }
+        }, { passive: true });
+    }
+
     // Main image hover zoom following cursor (skip when over controls / fullscreen)
     if (imgWrapper && mainImg) {
         const maxScale = 3;
@@ -242,8 +254,5 @@
         }
     });
 
-    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-        document.getElementById('mobile-menu')?.classList.toggle('hidden');
-    });
 </script>
 @endsection

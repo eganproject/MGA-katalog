@@ -8,7 +8,7 @@
                 </a>
 
                 <!-- Menu Tengah (Updated with Mega Menu Split View) -->
-                <div class="hidden md:flex space-x-8 items-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div class="hidden lg:flex space-x-8 items-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <a href="/" class="text-slate-100 hover:text-white font-medium transition drop-shadow-md">Beranda</a>
                     
                     <!-- MENU PRODUK DENGAN SPLIT MEGA MENU -->
@@ -102,8 +102,11 @@
 
                 <!-- Tombol Kanan -->
                 <div class="flex items-center gap-4">
-                    <div class="md:hidden flex items-center">
-                        <button id="mobile-menu-btn" class="text-white hover:text-brand-500 focus:outline-none">
+                    <div class="lg:hidden flex items-center">
+                        <button id="mobile-menu-btn"
+                                aria-controls="mobile-menu"
+                                aria-expanded="false"
+                                class="text-white hover:text-brand-500 focus:outline-none p-1 rounded-md hover:bg-white/10">
                             <i data-lucide="menu" class="w-8 h-8"></i>
                         </button>
                     </div>
@@ -111,11 +114,11 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden fixed top-20 inset-x-0 z-40 bg-slate-900/95 border-t border-slate-800 max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <div class="px-4 pt-2 pb-8 space-y-2 shadow-xl shadow-slate-900/40">
-                <a href="#home" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Beranda</a>
-                <a href="#products" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Produk</a>
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Tentang</a>
+        <div id="mobile-menu" class="hidden lg:hidden fixed top-0 inset-x-0 z-[60] bg-slate-900/95 border-t border-slate-800 max-h-screen overflow-y-auto pt-24">
+            <div class="px-4 pb-10 space-y-2 shadow-xl shadow-slate-900/40">
+                <a href="{{ url('/') }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Beranda</a>
+                <a href="{{ route('kategori') ?? '/#products' }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Produk</a>
+                <a href="{{ url('/tentang') }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Tentang</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Kontak</a>
             </div>
         </div>
@@ -155,9 +158,26 @@
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileBtn && mobileMenu) {
-                mobileBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    document.body.classList.toggle('overflow-hidden', !mobileMenu.classList.contains('hidden'));
+                const toggleMenu = () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenu.classList.add('block');
+                    } else {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('block');
+                    }
+                    document.body.classList.toggle('overflow-hidden', isHidden);
+                    mobileBtn.setAttribute('aria-expanded', String(isHidden));
+                };
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                mobileBtn.addEventListener('click', toggleMenu);
+
+                // tutup menu saat link di-klik (mobile only)
+                mobileMenu.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', () => {
+                        if (!mobileMenu.classList.contains('hidden')) toggleMenu();
+                    });
                 });
             }
         });

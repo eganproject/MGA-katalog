@@ -214,6 +214,5 @@
             el.addEventListener('change', () => el.form.submit());
         });
 
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
     </script>
 @endsection
