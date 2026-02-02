@@ -134,7 +134,7 @@
 
                 @if($product->description)
                     <div class="prose prose-slate max-w-none leading-relaxed">
-                        {!! nl2br(e($product->description)) !!}
+                        {!! $product->description !!}
                     </div>
                 @endif
 

@@ -107,3 +107,18 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    {{-- CKEditor 4 (gratis) dari CDN untuk field deskripsi --}}
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const desc = document.getElementById('description');
+            if (!desc) return;
+            CKEDITOR.replace('description', {
+                height: 280,
+                removeButtons: 'Flash,Smiley,SpecialChar' // simple toolbar, bisa diubah sesuai kebutuhan
+            });
+        });
+    </script>
+@endpush
