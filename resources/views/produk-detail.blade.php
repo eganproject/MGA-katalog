@@ -85,18 +85,25 @@
                         // Fallback to placeholder if still empty
                         $activeImage = $gallery->first();
                     @endphp
-                    <div id="main-image-wrapper" class="group bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in w-[451px] h-[451px] max-w-full mx-auto">
+                    <div id="main-image-wrapper" class="group relative bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in w-[451px] h-[451px] max-w-full mx-auto">
                         @if($activeImage?->file_path)
                             <img id="main-product-image" src="{{ asset('storage/'.$activeImage->file_path) }}" alt="{{ $activeImage->alt_text ?? $product->name }}" class="w-full h-full object-contain transition-transform duration-300 ease-out">
                         @else
                             <div class="h-full w-full flex items-center justify-center text-3xl font-display text-slate-400">{{ strtoupper(substr($product->name,0,2)) }}</div>
                         @endif
+
+                        <button type="button" id="prev-image" class="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 text-slate-600 border border-slate-200 shadow hover:bg-white hover:text-brand-600 transition items-center justify-center">
+                            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                        </button>
+                        <button type="button" id="next-image" class="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 text-slate-600 border border-slate-200 shadow hover:bg-white hover:text-brand-600 transition items-center justify-center">
+                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </button>
                     </div>
 
                     @if($gallery->count())
                         <div class="mt-4 flex flex-wrap gap-3 max-w-[451px] mx-auto">
                             @foreach($gallery as $img)
-                                <button class="thumb-btn w-[100px] h-[100px] rounded-xl border {{ $loop->first ? 'border-brand-300 ring-2 ring-brand-200' : 'border-slate-200' }} bg-white overflow-hidden" data-src="{{ asset('storage/'.$img->file_path) }}">
+                                <button class="thumb-btn w-[100px] h-[100px] rounded-xl border {{ $loop->first ? 'border-brand-300 ring-2 ring-brand-200' : 'border-slate-200' }} bg-white overflow-hidden" data-index="{{ $loop->index }}" data-src="{{ asset('storage/'.$img->file_path) }}" data-alt="{{ $img->alt_text ?? $product->name }}">
                                     <img src="{{ asset('storage/'.$img->file_path) }}" alt="{{ $img->alt_text ?? $product->name }}" class="w-full h-full object-cover">
                                 </button>
                             @endforeach
@@ -147,26 +154,6 @@
 <script>
     lucide.createIcons();
 
-    // Main image hover zoom following cursor
-    const imgWrapper = document.getElementById('main-image-wrapper');
-    const mainImg = document.getElementById('main-product-image');
-
-    if (imgWrapper && mainImg) {
-        const maxScale = 3;
-        imgWrapper.addEventListener('mousemove', (e) => {
-            const rect = imgWrapper.getBoundingClientRect();
-            const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
-            const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-            mainImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-            mainImg.style.transform = `scale(${maxScale})`;
-        });
-
-        imgWrapper.addEventListener('mouseleave', () => {
-            mainImg.style.transformOrigin = '50% 50%';
-            mainImg.style.transform = 'scale(1)';
-        });
-    }
-
     // Navbar scroll effect
     function updateNavbar() {
         const nav = document.getElementById('navbar');
@@ -181,15 +168,66 @@
     window.addEventListener('scroll', updateNavbar);
     window.addEventListener('load', updateNavbar);
 
-    // Thumbnail switcher
-    document.querySelectorAll('.thumb-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const main = document.getElementById('main-product-image');
-            main.src = btn.dataset.src;
-            document.querySelectorAll('.thumb-btn').forEach(b => b.classList.remove('border-brand-300','ring-2','ring-brand-200'));
-            btn.classList.add('border-brand-300','ring-2','ring-brand-200');
+    // Gallery navigation (thumbnails + arrows)
+    const imgWrapper = document.getElementById('main-image-wrapper');
+    const mainImg = document.getElementById('main-product-image');
+    const thumbs = Array.from(document.querySelectorAll('.thumb-btn'));
+    const prevBtn = document.getElementById('prev-image');
+    const nextBtn = document.getElementById('next-image');
+    let currentIndex = thumbs.findIndex(btn => btn.classList.contains('ring-2'));
+    if (currentIndex < 0) currentIndex = 0;
+
+    function setActive(index) {
+        if (!thumbs.length) return;
+        currentIndex = (index + thumbs.length) % thumbs.length;
+        thumbs.forEach((btn, i) => {
+            btn.classList.toggle('border-brand-300', i === currentIndex);
+            btn.classList.toggle('ring-2', i === currentIndex);
+            btn.classList.toggle('ring-brand-200', i === currentIndex);
+            btn.classList.toggle('border-slate-200', i !== currentIndex);
         });
-    });
+        const activeBtn = thumbs[currentIndex];
+        const src = activeBtn.dataset.src;
+        const alt = activeBtn.dataset.alt || '';
+        mainImg.src = src;
+        mainImg.alt = alt;
+    }
+
+    thumbs.forEach((btn, idx) => btn.addEventListener('click', () => setActive(idx)));
+    prevBtn?.addEventListener('click', () => setActive(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => setActive(currentIndex + 1));
+
+    // Main image hover zoom following cursor
+    if (imgWrapper && mainImg) {
+        const maxScale = 3;
+        const isOnArrow = (target) => target.closest('#prev-image') || target.closest('#next-image');
+
+        imgWrapper.addEventListener('mousemove', (e) => {
+            if (isOnArrow(e.target)) return; // jangan zoom saat hover arrow
+            const rect = imgWrapper.getBoundingClientRect();
+            const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
+            const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
+            mainImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            mainImg.style.transform = `scale(${maxScale})`;
+        });
+
+        imgWrapper.addEventListener('mouseleave', () => {
+            mainImg.style.transformOrigin = '50% 50%';
+            mainImg.style.transform = 'scale(1)';
+        });
+
+        // Pastikan saat masuk/keluar tombol arrow, zoom dimatikan
+        ['mouseenter', 'mouseleave'].forEach(evt => {
+            prevBtn?.addEventListener(evt, () => {
+                mainImg.style.transformOrigin = '50% 50%';
+                mainImg.style.transform = 'scale(1)';
+            });
+            nextBtn?.addEventListener(evt, () => {
+                mainImg.style.transformOrigin = '50% 50%';
+                mainImg.style.transform = 'scale(1)';
+            });
+        });
+    }
 
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
         document.getElementById('mobile-menu')?.classList.toggle('hidden');
