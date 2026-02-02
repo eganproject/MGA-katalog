@@ -29,30 +29,19 @@
                                 <div class="w-64 bg-slate-50 py-6 flex flex-col border-r border-slate-100">
                                     <h5 class="px-6 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Kategori</h5>
                                     <div class="flex-1 overflow-y-auto">
-                                        <button data-category="interactive" onmouseover="showCategory('interactive')" class="category-item active w-full text-left px-6 py-3 text-sm font-medium text-slate-600 hover:bg-white hover:text-brand-600 transition-all flex items-center justify-between group/cat">
-                                            Interactive Panel
-                                            <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-opacity"></i>
-                                        </button>
-                                        <button data-category="mobile" onmouseover="showCategory('mobile')" class="category-item w-full text-left px-6 py-3 text-sm font-medium text-slate-600 hover:bg-white hover:text-brand-600 transition-all flex items-center justify-between group/cat">
-                                            Mobile Signage
-                                            <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-opacity"></i>
-                                        </button>
-                                        <button data-category="signage" onmouseover="showCategory('signage')" class="category-item w-full text-left px-6 py-3 text-sm font-medium text-slate-600 hover:bg-white hover:text-brand-600 transition-all flex items-center justify-between group/cat">
-                                            Digital Signage
-                                            <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-opacity"></i>
-                                        </button>
-                                        <button data-category="videotron" onmouseover="showCategory('videotron')" class="category-item w-full text-left px-6 py-3 text-sm font-medium text-slate-600 hover:bg-white hover:text-brand-600 transition-all flex items-center justify-between group/cat">
-                                            Videotron LED
-                                            <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-opacity"></i>
-                                        </button>
-                                        <button data-category="kiosk" onmouseover="showCategory('kiosk')" class="category-item w-full text-left px-6 py-3 text-sm font-medium text-slate-600 hover:bg-white hover:text-brand-600 transition-all flex items-center justify-between group/cat">
-                                            Kiosk System
-                                            <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-opacity"></i>
-                                        </button>
-                                        <button data-category="access" onmouseover="showCategory('access')" class="category-item w-full text-left px-6 py-3 text-sm font-medium text-slate-600 hover:bg-white hover:text-brand-600 transition-all flex items-center justify-between group/cat">
-                                            Aksesoris
-                                            <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-opacity"></i>
-                                        </button>
+                                        @forelse(($navCategories ?? collect()) as $loopCat)
+                                            <button
+                                                data-nav-category="cat-{{ $loopCat->id }}"
+                                                data-name="{{ $loopCat->name }}"
+                                                data-url="{{ route('kategori.show', $loopCat->slug) }}"
+                                                onmouseover="window.__navShowCategory && __navShowCategory('cat-{{ $loopCat->id }}')"
+                                                class="category-item {{ $loop->first ? 'active' : '' }} w-full text-left px-6 py-3 text-sm font-medium text-slate-600 hover:bg-white hover:text-brand-600 transition-all flex items-center justify-between group/cat">
+                                                {{ $loopCat->name }}
+                                                <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover/cat:opacity-100 transition-opacity"></i>
+                                            </button>
+                                        @empty
+                                            <div class="px-6 py-3 text-sm text-slate-400">Kategori belum tersedia.</div>
+                                        @endforelse
                                     </div>
                                     
                                     <!-- Footer Link Left -->
@@ -66,13 +55,45 @@
                                 <!-- RIGHT SIDE: Product Grid (Dynamic Content) -->
                                 <div class="flex-1 p-8 bg-white overflow-y-auto">
                                     <div class="flex justify-between items-center mb-6">
-                                        <h4 id="mega-menu-title" class="font-display font-bold text-xl text-slate-800">Interactive Panel</h4>
-                                        <a href="#" class="text-xs font-semibold text-brand-500 hover:text-brand-700 flex items-center">Lihat Semua <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i></a>
+                                        <h4 id="mega-menu-title" class="font-display font-bold text-xl text-slate-800">
+                                            {{ ($navCategories ?? collect())->first()->name ?? 'Kategori' }}
+                                        </h4>
+                                        <a id="mega-menu-link" href="{{ ($navCategories ?? collect())->first() ? route('kategori.show', ($navCategories->first()->slug ?? '')) : '#' }}" class="text-xs font-semibold text-brand-500 hover:text-brand-700 flex items-center">
+                                            Lihat Semua <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i>
+                                        </a>
                                     </div>
                                     
                                     <!-- Grid Container -->
                                     <div id="mega-menu-grid" class="grid grid-cols-3 gap-4">
-                                        <!-- Content will be injected by JS -->
+                                        @if(isset($navCategories) && $navCategories->isNotEmpty())
+                                            @foreach($navCategories as $loopCat)
+                                                <div class="mega-grid-group {{ $loop->first ? '' : 'hidden' }}" data-nav-category="cat-{{ $loopCat->id }}">
+                                                    @php
+                                                        $prods = ($navProductsByCategory[$loopCat->id] ?? collect())->take(6);
+                                                    @endphp
+                                                    @forelse($prods as $prod)
+                                                        <a href="{{ route('produk.show', $prod->slug) }}" class="group block rounded-xl border border-slate-100 hover:border-brand-200 shadow-sm hover:shadow-md transition overflow-hidden bg-white">
+                                                            <div class="h-28 bg-slate-50 flex items-center justify-center overflow-hidden">
+                                                                @if($prod->thumbnail)
+                                                                    <img src="{{ asset('storage/'.$prod->thumbnail) }}" alt="{{ $prod->name }}" class="w-full h-full object-cover group-hover:scale-105 transition">
+                                                                @else
+                                                                    <span class="text-sm text-slate-400">{{ $prod->name }}</span>
+                                                                @endif
+                                                            </div>
+                                                            <div class="p-3 space-y-1">
+                                                                <p class="text-[11px] uppercase tracking-wide text-slate-400">{{ $loopCat->name }}</p>
+                                                                <h5 class="text-sm font-semibold text-slate-800 leading-tight line-clamp-2">{{ $prod->name }}</h5>
+                                                                <p class="text-xs text-slate-500 line-clamp-2">{{ $prod->excerpt }}</p>
+                                                            </div>
+                                                        </a>
+                                                    @empty
+                                                        <div class="text-sm text-slate-400">Belum ada produk.</div>
+                                                    @endforelse
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="text-sm text-slate-400">Data kategori belum tersedia.</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -102,3 +123,36 @@
             </div>
         </div>
     </nav>
+
+<script>
+    // Scoped handler khusus navbar agar tidak bentrok dengan fungsi bernama sama di halaman lain
+    (function() {
+        const buttons = document.querySelectorAll('.category-item');
+        const grids = document.querySelectorAll('.mega-grid-group');
+        const title = document.getElementById('mega-menu-title');
+        const link = document.getElementById('mega-menu-link');
+
+        function setCategory(key) {
+            buttons.forEach(btn => {
+                const active = btn.dataset.navCategory === key;
+                btn.classList.toggle('active', active);
+                if (active) {
+                    title.textContent = btn.dataset.name || 'Kategori';
+                    if (link) link.href = btn.dataset.url || '#';
+                }
+            });
+
+            grids.forEach(grid => {
+                grid.classList.toggle('hidden', grid.dataset.navCategory !== key);
+            });
+        }
+
+        // ekspor ke global space dengan nama unik
+        window.__navShowCategory = setCategory;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstActive = document.querySelector('.category-item.active') || document.querySelector('.category-item');
+            if (firstActive) setCategory(firstActive.dataset.navCategory);
+        });
+    })();
+</script>

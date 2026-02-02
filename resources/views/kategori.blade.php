@@ -139,27 +139,10 @@
         const categoryTitles = { 'interactive': 'Interactive Panel', 'mobile': 'Mobile Signage', 'signage': 'Digital Signage', 'videotron': 'Videotron LED', 'kiosk': 'Kiosk System', 'access': 'Aksesoris' };
 
         function showCategory(catId) {
-            document.querySelectorAll('.category-item').forEach(el => { el.classList.remove('active', 'bg-slate-50', 'text-brand-600', 'border-r-4', 'border-brand-500'); el.classList.add('text-slate-600'); });
-            const activeBtn = document.querySelector(`button[data-category="${catId}"]`);
-            if(activeBtn) { activeBtn.classList.add('active', 'bg-slate-50', 'text-brand-600'); activeBtn.classList.remove('text-slate-600'); }
-            document.getElementById('mega-menu-title').innerText = categoryTitles[catId];
-            const grid = document.getElementById('mega-menu-grid');
-            grid.innerHTML = ''; 
-            const items = productsData[catId];
-            if(items) {
-                items.forEach((prod, index) => {
-                    const html = `
-                        <a href="category_page.html" class="group/prod block p-3 rounded-xl border border-slate-100 hover:border-brand-200 hover:shadow-md transition-all duration-300 animate-pop-in" style="animation-delay: ${index * 50}ms">
-                            <div class="h-24 bg-slate-50 rounded-lg flex items-center justify-center mb-3 group-hover/prod:bg-brand-50 transition-colors">
-                                <i data-lucide="${prod.img}" class="w-8 h-8 text-slate-400 group-hover/prod:text-brand-500 transition-colors"></i>
-                            </div>
-                            <h6 class="text-xs font-bold text-slate-800 line-clamp-1 group-hover/prod:text-brand-600 transition-colors">${prod.name}</h6>
-                            <p class="text-[10px] text-slate-400 mt-1">Lihat Detail</p>
-                        </a>
-                    `;
-                    grid.innerHTML += html;
-                });
-                lucide.createIcons();
+            // override ke handler navbar dinamis
+            const key = document.querySelector('.category-item')?.dataset.navCategory || catId;
+            if (window.__navShowCategory) {
+                window.__navShowCategory(key);
             }
         }
 

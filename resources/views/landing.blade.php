@@ -598,7 +598,15 @@
             }
         }
 
-        // Initialize First Category
+        // Override handler lama supaya pakai data dinamis dari partial navbar
+        window.showCategory = function (catId) {
+            const key = document.querySelector('.category-item')?.dataset.navCategory || catId;
+            if (window.__navShowCategory) {
+                window.__navShowCategory(key);
+            }
+        };
+
+        // Initialize First Category (gunakan handler baru)
         window.addEventListener('DOMContentLoaded', () => {
             showCategory('interactive');
         });
