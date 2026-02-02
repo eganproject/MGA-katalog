@@ -111,12 +111,12 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
-                <a href="#home" class="block px-3 py-3 text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white rounded-md">Beranda</a>
-                <a href="#products" class="block px-3 py-3 text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white rounded-md">Produk</a>
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white rounded-md">Tentang</a>
-                <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white rounded-md">Kontak</a>
+        <div id="mobile-menu" class="hidden md:hidden fixed top-20 inset-x-0 z-40 bg-slate-900/95 border-t border-slate-800 max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <div class="px-4 pt-2 pb-8 space-y-2 shadow-xl shadow-slate-900/40">
+                <a href="#home" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Beranda</a>
+                <a href="#products" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Produk</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Tentang</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Kontak</a>
             </div>
         </div>
     </nav>
@@ -150,6 +150,16 @@
         document.addEventListener('DOMContentLoaded', () => {
             const firstActive = document.querySelector('.category-item.active') || document.querySelector('.category-item');
             if (firstActive) setCategory(firstActive.dataset.navCategory);
+
+            // mobile menu toggle + body scroll lock
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    document.body.classList.toggle('overflow-hidden', !mobileMenu.classList.contains('hidden'));
+                });
+            }
         });
     })();
 </script>
