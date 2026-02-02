@@ -98,6 +98,9 @@
                         <button type="button" id="next-image" class="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 text-slate-600 border border-slate-200 shadow hover:bg-white hover:text-brand-600 transition items-center justify-center">
                             <i data-lucide="chevron-right" class="w-5 h-5"></i>
                         </button>
+                        <button type="button" id="fullscreen-image" class="absolute right-3 top-3 w-9 h-9 rounded-full bg-white/85 text-slate-700 border border-slate-200 shadow hover:bg-white hover:text-brand-600 transition flex items-center justify-center">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                        </button>
                     </div>
 
                     @if($gallery->count())
@@ -174,6 +177,7 @@
     const thumbs = Array.from(document.querySelectorAll('.thumb-btn'));
     const prevBtn = document.getElementById('prev-image');
     const nextBtn = document.getElementById('next-image');
+    const fullscreenBtn = document.getElementById('fullscreen-image');
     let currentIndex = thumbs.findIndex(btn => btn.classList.contains('ring-2'));
     if (currentIndex < 0) currentIndex = 0;
 
@@ -197,13 +201,13 @@
     prevBtn?.addEventListener('click', () => setActive(currentIndex - 1));
     nextBtn?.addEventListener('click', () => setActive(currentIndex + 1));
 
-    // Main image hover zoom following cursor
+    // Main image hover zoom following cursor (skip when over controls)
     if (imgWrapper && mainImg) {
         const maxScale = 3;
-        const isOnArrow = (target) => target.closest('#prev-image') || target.closest('#next-image');
+        const isOnControl = (target) => target.closest('#prev-image') || target.closest('#next-image') || target.closest('#fullscreen-image');
 
         imgWrapper.addEventListener('mousemove', (e) => {
-            if (isOnArrow(e.target)) return; // jangan zoom saat hover arrow
+            if (isOnControl(e.target)) return; // jangan zoom saat hover controls
             const rect = imgWrapper.getBoundingClientRect();
             const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
             const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
@@ -211,23 +215,28 @@
             mainImg.style.transform = `scale(${maxScale})`;
         });
 
-        imgWrapper.addEventListener('mouseleave', () => {
+        const resetZoom = () => {
             mainImg.style.transformOrigin = '50% 50%';
             mainImg.style.transform = 'scale(1)';
-        });
+        };
 
-        // Pastikan saat masuk/keluar tombol arrow, zoom dimatikan
+        imgWrapper.addEventListener('mouseleave', resetZoom);
         ['mouseenter', 'mouseleave'].forEach(evt => {
-            prevBtn?.addEventListener(evt, () => {
-                mainImg.style.transformOrigin = '50% 50%';
-                mainImg.style.transform = 'scale(1)';
-            });
-            nextBtn?.addEventListener(evt, () => {
-                mainImg.style.transformOrigin = '50% 50%';
-                mainImg.style.transform = 'scale(1)';
-            });
+            prevBtn?.addEventListener(evt, resetZoom);
+            nextBtn?.addEventListener(evt, resetZoom);
+            fullscreenBtn?.addEventListener(evt, resetZoom);
         });
     }
+
+    // Fullscreen toggle for main image
+    fullscreenBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!document.fullscreenElement) {
+            imgWrapper.requestFullscreen?.();
+        } else {
+            document.exitFullscreen?.();
+        }
+    });
 
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
         document.getElementById('mobile-menu')?.classList.toggle('hidden');
