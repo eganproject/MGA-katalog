@@ -352,7 +352,7 @@
                     <div>
                         <h4 class="text-slate-900 font-display font-bold text-xl mb-2 group-hover:text-brand-600 transition-colors">Gratis Ongkir</h4>
                         <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
-                            Gratis Ongkir untuk daerah JABODETABEK.
+                            Gratis Ongkir untuk daerah <br> JABODETABEK.
                         </p>
                     </div>
                 </div>
@@ -365,7 +365,7 @@
                     <div>
                         <h4 class="text-slate-900 font-display font-bold text-xl mb-2 group-hover:text-purple-600 transition-colors">Pusat Bantuan</h4>
                         <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
-                            Dukungan teknis responsif 08.00 - 23.00 WIB.
+                            Dukungan teknis responsif <br>08.00 - 23.00 WIB.
                         </p>
                     </div>
                 </div>
@@ -378,7 +378,7 @@
                     <div>
                         <h4 class="text-slate-900 font-display font-bold text-xl mb-2 group-hover:text-orange-600 transition-colors">Email Kami</h4>
                         <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
-                            Hubungi kami di sales@mga-advertising.co.id
+                            Hubungi kami di <br> sales@mga-advertising.co.id
                         </p>
                     </div>
                 </div>
