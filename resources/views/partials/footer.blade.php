@@ -10,7 +10,7 @@
                     <p class="text-xs text-slate-600">&copy; 2026 Hak Cipta Dilindungi.</p>
                 </div>
                 <div class="flex gap-6 text-sm font-medium text-slate-400"><a href="/" class="hover:text-brand-400 transition-colors">Beranda</a><a href="/kategori" class="hover:text-brand-400 transition-colors">Produk</a><a href="/tentang" class="hover:text-brand-400 transition-colors">Tentang</a></div>
-                <div class="flex gap-5"><a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a><a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a></div>
+                <div class="flex gap-5"><a href="https://www.instagram.com/mediagudangacc/" target="_blank" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a><a href="https://www.tiktok.com/@mediagudangacc" target="_blank" class="text-slate-500 hover:text-white transition-colors" aria-label="TikTok"><svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M16.708 0c1.142 2.15 3.285 3.62 5.59 3.777v4.206c-1.33.047-2.66-.104-3.873-.45v7.676c0 5.065-4.107 9.171-9.171 9.171S0 20.478 0 15.413C0 10.348 4.106 6.242 9.171 6.242c.49 0 .974.038 1.452.112v4.433a4.744 4.744 0 0 0-1.452-.228c-2.631 0-4.763 2.133-4.763 4.764 0 2.63 2.132 4.762 4.763 4.762 2.63 0 4.763-2.132 4.763-4.763V0h3.972z"/></svg></a></div>
             </div>
         </div>
     </footer>
