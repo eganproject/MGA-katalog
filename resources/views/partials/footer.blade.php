@@ -3,7 +3,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-                    <div class="flex items-center text-white"><i data-lucide="monitor-play" class="w-5 h-5 mr-2 text-brand-500"></i><span class="font-display font-bold text-lg tracking-wide">MGA DIGITAL</span></div>
+                    <div class="flex items-center">
+                        <img src="{{ asset('public/assets/images/logo/logo.png') }}" alt="MGA DIGITAL" class="h-8 w-auto object-contain">
+                    </div>
                     <span class="hidden md:block text-slate-700">|</span>
                     <p class="text-xs text-slate-600">&copy; 2026 Hak Cipta Dilindungi.</p>
                 </div>
