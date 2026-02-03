@@ -206,8 +206,8 @@
     <section id="products" class="py-24 bg-slate-50 relative overflow-hidden flex items-center">
         <!-- Background Elements -->
         <div class="text-marquee-wrapper">
-            <div class="text-marquee-content">INTERACTIVE • SIGNAGE • VIDEOTRON • KIOSK • DIGITAL • DISPLAY • SMART • VISUAL • INTERACTIVE • SIGNAGE • VIDEOTRON • KIOSK • DIGITAL • DISPLAY • SMART • VISUAL •</div>
-            <div class="text-marquee-content">INTERACTIVE • SIGNAGE • VIDEOTRON • KIOSK • DIGITAL • DISPLAY • SMART • VISUAL • INTERACTIVE • SIGNAGE • VIDEOTRON • KIOSK • DIGITAL • DISPLAY • SMART • VISUAL •</div>
+            <div class="text-marquee-content">TRIPOD BANNER • STAND DISPLAY • ROLL UP BANNER • SLIM LIGHTBOX • TEMPAT BROSUR • TRIPOD BANNER • STAND DISPLAY • ROLL UP BANNER • SLIM LIGHTBOX • TEMPAT BROSUR •</div>
+            <div class="text-marquee-content">TRIPOD BANNER • STAND DISPLAY • ROLL UP BANNER • SLIM LIGHTBOX • TEMPAT BROSUR • TRIPOD BANNER • STAND DISPLAY • ROLL UP BANNER • SLIM LIGHTBOX • TEMPAT BROSUR •</div>
         </div>
         <div class="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-brand-200/30 rounded-full blur-3xl -z-10"></div>
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl -z-10"></div>
@@ -352,7 +352,7 @@
                     <div>
                         <h4 class="text-slate-900 font-display font-bold text-xl mb-2 group-hover:text-brand-600 transition-colors">Gratis Ongkir</h4>
                         <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
-                            Pengiriman aman ke seluruh Indonesia.
+                            Gratis Ongkir untuk daerah JABODETABEK.
                         </p>
                     </div>
                 </div>
@@ -365,7 +365,7 @@
                     <div>
                         <h4 class="text-slate-900 font-display font-bold text-xl mb-2 group-hover:text-purple-600 transition-colors">Pusat Bantuan</h4>
                         <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
-                            Dukungan teknis responsif 24/7.
+                            Dukungan teknis responsif 08.00 - 23.00 WIB.
                         </p>
                     </div>
                 </div>
@@ -378,7 +378,7 @@
                     <div>
                         <h4 class="text-slate-900 font-display font-bold text-xl mb-2 group-hover:text-orange-600 transition-colors">Email Kami</h4>
                         <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
-                            Hubungi kami di sales@mga.co.id
+                            Hubungi kami di sales@mga-advertising.co.id
                         </p>
                     </div>
                 </div>

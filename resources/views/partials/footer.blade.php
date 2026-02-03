@@ -8,7 +8,7 @@
                     <p class="text-xs text-slate-600">&copy; 2026 Hak Cipta Dilindungi.</p>
                 </div>
                 <div class="flex gap-6 text-sm font-medium text-slate-400"><a href="#home" class="hover:text-brand-400 transition-colors">Beranda</a><a href="#products" class="hover:text-brand-400 transition-colors">Produk</a><a href="#about" class="hover:text-brand-400 transition-colors">Tentang</a><a href="#contact" class="hover:text-brand-400 transition-colors">Kontak</a></div>
-                <div class="flex gap-5"><a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a><a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a><a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a></div>
+                <div class="flex gap-5"><a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a><a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a></div>
             </div>
         </div>
     </footer>
