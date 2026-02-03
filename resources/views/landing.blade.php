@@ -138,7 +138,7 @@
         <div class="hero-video-wrapper">
             <!-- Video Lokal (Ganti src dengan path file Anda) -->
             <video autoplay muted loop playsinline class="hero-video-local">
-                <source src="/assets/videos/background.mp4" type="video/mp4">
+                <source src="{{ asset('public/assets/videos/background.mp4') }}" type="video/mp4">
                 <!-- Fallback Online -->
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-blue-lines-996-large.mp4" type="video/mp4">
             </video>
@@ -174,27 +174,27 @@
                 <div class="logo-marquee-container">
                     <div class="logo-marquee-content items-center transition-opacity duration-500">
                         <div class="flex gap-16 items-center shrink-0 pr-16">
-                            <img src="{{ asset('assets/brand_partner/1.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/2.png') }}" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/3.png') }}" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/4.png') }}" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/5.png') }}" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/6.png') }}" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/7.png') }}" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/8.png') }}" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/9.png') }}" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/1.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/2.png') }}" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/3.png') }}" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/4.png') }}" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/5.png') }}" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/6.png') }}" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/7.png') }}" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/8.png') }}" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/9.png') }}" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
                         </div>
                         <!-- Duplikat untuk Marquee Loop -->
                         <div class="flex gap-16 items-center shrink-0 pr-16">
-                            <img src="{{ asset('assets/brand_partner/1.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/2.png') }}" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/3.png') }}" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/4.png') }}" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/5.png') }}" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/6.png') }}" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/7.png') }}" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/8.png') }}" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
-                            <img src="{{ asset('assets/brand_partner/9.png') }}" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/1.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/2.png') }}" alt="Partner 2" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/3.png') }}" alt="Partner 3" class="h-12 md:h-20 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/4.png') }}" alt="Partner 4" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/5.png') }}" alt="Partner 5" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/6.png') }}" alt="Partner 6" class="h-10 md:h-14 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/7.png') }}" alt="Partner 7" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/8.png') }}" alt="Partner 8" class="h-12 md:h-16 object-contain shrink-0">
+                            <img src="{{ asset('public/assets/brand_partner/9.png') }}" alt="Partner 9" class="h-12 md:h-16 object-contain shrink-0">
                         </div>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                                     <div class="relative w-full flex-grow flex items-center justify-center mt-4">
                                         <div class="absolute w-40 h-40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
                                         @if($cat?->image)
-                                            <img src="{{ asset('storage/'.$cat->image) }}" alt="{{ $cat->name }}" class="relative z-10 w-40 h-40 object-contain drop-shadow-xl animate-float">
+                                            <img src="{{ Storage::disk('public')->url($cat->image) }}" alt="{{ $cat->name }}" class="relative z-10 w-40 h-40 object-contain drop-shadow-xl animate-float">
                                         @else
                                             <div class="relative z-10 w-32 h-32 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold uppercase animate-float">{{ strtoupper(substr($cat->name ?? 'X',0,2)) }}</div>
                                         @endif

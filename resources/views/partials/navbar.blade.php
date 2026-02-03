@@ -4,7 +4,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center cursor-pointer">
-                    <img src="/assets/images/logo/logo.png" alt="Logo" class="h-10 w-auto object-contain">
+                    <img src="{{ asset('public/assets/images/logo/logo.png') }}" alt="Logo" class="h-10 w-auto object-contain">
                 </a>
 
                 <!-- Menu Tengah (Updated with Mega Menu Split View) -->
@@ -72,7 +72,7 @@
                                                         <a href="{{ route('produk.show', $prod->slug) }}" class="group block rounded-xl border border-slate-100 hover:border-brand-200 shadow-sm hover:shadow-md transition overflow-hidden bg-white">
                                                             <div class="h-28 bg-slate-50 flex items-center justify-center overflow-hidden">
                                                                 @if($prod->thumbnail)
-                                                                    <img src="{{ asset('storage/'.$prod->thumbnail) }}" alt="{{ $prod->name }}" class="w-full h-full object-cover group-hover:scale-105 transition">
+                                                                    <img src="{{ Storage::disk('public')->url($prod->thumbnail) }}" alt="{{ $prod->name }}" class="w-full h-full object-cover group-hover:scale-105 transition">
                                                                 @else
                                                                     <span class="text-sm text-slate-400">{{ $prod->name }}</span>
                                                                 @endif

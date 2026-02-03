@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Media Gudang Acc' }}</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo/thumb.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('public/assets/images/logo/thumb.png') }}">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
