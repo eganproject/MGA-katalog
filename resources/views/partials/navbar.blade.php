@@ -78,7 +78,7 @@
                                                                 @endif
                                                             </div>
                                                             <div class="p-3 space-y-1">
-                                                                <p class="text-[11px] uppercase tracking-wide text-slate-400">{{ $loopCat->name }}</p>
+                                                                {{-- <p class="text-[11px] uppercase tracking-wide text-slate-400">{{ $loopCat->name }}</p> --}}
                                                                 <h5 class="text-sm font-semibold text-slate-800 leading-tight line-clamp-2">{{ $prod->name }}</h5>
                                                                 {{-- <p class="text-xs text-slate-500 line-clamp-2">{{ $prod->excerpt }}</p> --}}
                                                             </div>
