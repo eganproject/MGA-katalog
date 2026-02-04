@@ -64,13 +64,13 @@
                                     <div id="mega-menu-grid" class="grid grid-cols-3 gap-4">
                                         @if(isset($navCategories) && $navCategories->isNotEmpty())
                                             @foreach($navCategories as $loopCat)
-                                                <div class="mega-grid-group {{ $loop->first ? '' : 'hidden' }}" data-nav-category="cat-{{ $loopCat->id }}">
+                                                <div class="mega-grid-group {{ $loop->first ? 'grid' : 'hidden' }} col-span-3 grid-cols-3 gap-4" data-nav-category="cat-{{ $loopCat->id }}">
                                                     @php
                                                         $prods = ($navProductsByCategory[$loopCat->id] ?? collect())->take(6);
                                                     @endphp
                                                     @forelse($prods as $prod)
-                                                        <a href="{{ route('produk.show', $prod->slug) }}" class="group block rounded-xl border border-slate-100 hover:border-brand-200 shadow-sm hover:shadow-md transition overflow-hidden bg-white">
-                                                            <div class="h-28 bg-slate-50 flex items-center justify-center overflow-hidden">
+                                                        <a href="{{ route('produk.show', $prod->slug) }}" class="group block rounded-xl border border-slate-100 hover:border-brand-200 shadow-sm hover:shadow-md transition overflow-hidden bg-white h-full">
+                                                            <div class="aspect-[4/3] bg-slate-50 flex items-center justify-center overflow-hidden">
                                                                 @if($prod->thumbnail)
                                                                     <img src="{{ Storage::disk('public')->url($prod->thumbnail) }}" alt="{{ $prod->name }}" class="w-full h-full object-cover group-hover:scale-105 transition">
                                                                 @else
@@ -143,7 +143,9 @@
             });
 
             grids.forEach(grid => {
-                grid.classList.toggle('hidden', grid.dataset.navCategory !== key);
+                const isActive = grid.dataset.navCategory === key;
+                grid.classList.toggle('hidden', !isActive);
+                grid.classList.toggle('grid', isActive);
             });
         }
 
