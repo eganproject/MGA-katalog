@@ -89,6 +89,7 @@
         }
         .logo-marquee-content { display: flex; width: max-content; animation: marquee 60s linear infinite; }
         .logo-marquee-content:hover { animation-play-state: paused; }
+        .logo-marquee-content img { transform: scale(1.08); transform-origin: center; }
 
         .text-marquee-wrapper {
             position: absolute; top: 10%; left: 0; width: 100%; overflow: hidden; opacity: 0.03; z-index: 0; pointer-events: none;
@@ -352,7 +353,7 @@
                     <div>
                         <h4 class="text-slate-900 font-display font-bold text-xl mb-2 group-hover:text-brand-600 transition-colors">Gratis Ongkir</h4>
                         <p class="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
-                            Gratis Ongkir untuk daerah <br> JABODETABEK.
+                            Gratis Ongkir untuk daerah <br> JABODETABEK <br> S&K Berlaku.
                         </p>
                     </div>
                 </div>
