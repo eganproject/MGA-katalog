@@ -85,7 +85,7 @@
                         // Fallback to placeholder if still empty
                         $activeImage = $gallery->first();
                     @endphp
-                    <div id="main-image-wrapper" class="group relative bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in w-full h-[320px] sm:h-[360px] md:h-[420px] lg:h-[451px] max-w-full mx-auto">
+                    <div id="main-image-wrapper" class="group relative bg-white rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden shadow-sm cursor-zoom-in w-full h-[320px] sm:h-[360px] md:h-[420px] lg:h-[451px] max-w-full mx-auto">
                         @if($activeImage?->file_path)
                             <img id="main-product-image" src="{{ Storage::disk('public')->url($activeImage->file_path) }}" alt="{{ $activeImage->alt_text ?? $product->name }}" class="w-full h-full object-contain transition-transform duration-300 ease-out">
                         @else
