@@ -114,12 +114,16 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden fixed top-0 inset-x-0 z-[60] bg-slate-900/95 border-t border-slate-800 max-h-screen overflow-y-auto pt-24">
+        <div id="mobile-menu" class="hidden lg:hidden fixed top-0 inset-x-0 z-[60] bg-slate-900/95 border-t border-slate-800 max-h-screen overflow-y-auto pt-24 relative">
+            <button id="mobile-menu-close"
+                    aria-label="Tutup menu"
+                    class="absolute top-4 right-4 text-slate-200 hover:text-white p-2 rounded-md hover:bg-white/10">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
             <div class="px-4 pb-10 space-y-2 shadow-xl shadow-slate-900/40">
                 <a href="{{ url('/') }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Beranda</a>
                 <a href="{{ route('kategori') ?? '/#products' }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Produk</a>
                 <a href="{{ url('/tentang') }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Tentang</a>
-                <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Kontak</a>
             </div>
         </div>
     </nav>
@@ -174,6 +178,9 @@
                 };
                 mobileBtn.setAttribute('aria-expanded', 'false');
                 mobileBtn.addEventListener('click', toggleMenu);
+
+                const closeBtn = document.getElementById('mobile-menu-close');
+                if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
 
                 // tutup menu saat link di-klik (mobile only)
                 mobileMenu.querySelectorAll('a').forEach(a => {
