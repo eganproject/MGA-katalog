@@ -114,16 +114,35 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden fixed top-0 inset-x-0 z-[60] bg-slate-900/95 border-t border-slate-800 max-h-screen overflow-y-auto pt-24 relative">
-            <button id="mobile-menu-close"
-                    aria-label="Tutup menu"
-                    class="absolute top-4 right-4 text-slate-200 hover:text-white p-2 rounded-md hover:bg-white/10">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <div class="px-4 pb-10 space-y-2 shadow-xl shadow-slate-900/40">
-                <a href="{{ url('/') }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Beranda</a>
-                <a href="{{ route('kategori') ?? '/#products' }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Produk</a>
-                <a href="{{ url('/tentang') }}" class="block px-3 py-3 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-md">Tentang</a>
+        <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-[60] bg-slate-900/70 backdrop-blur-sm overflow-y-auto">
+            <div class="min-h-screen w-full flex items-start justify-center px-4 py-6 sm:py-10">
+                <div class="w-full max-w-md bg-slate-900/95 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                    <div class="flex items-center justify-between px-4 py-4 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ asset('public/assets/images/logo/logo.png') }}" alt="Logo" class="h-8 w-auto object-contain">
+                            <span class="text-sm font-semibold text-slate-200">Menu</span>
+                        </div>
+                        <button id="mobile-menu-close"
+                                aria-label="Tutup menu"
+                                class="text-slate-200 hover:text-white p-2 rounded-md hover:bg-white/10">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <div class="px-3 py-3 space-y-1">
+                        <a href="{{ url('/') }}" class="flex items-center justify-between px-3 py-3.5 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-xl transition">
+                            <span>Beranda</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                        </a>
+                        <a href="{{ route('kategori') ?? '/#products' }}" class="flex items-center justify-between px-3 py-3.5 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-xl transition">
+                            <span>Produk</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                        </a>
+                        <a href="{{ url('/tentang') }}" class="flex items-center justify-between px-3 py-3.5 text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-white rounded-xl transition">
+                            <span>Tentang</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
