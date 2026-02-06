@@ -152,14 +152,14 @@
                 <div class="text-white space-y-8 animate-fade-in-up flex flex-col items-center">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                         <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                        <span class="text-sm font-medium tracking-wide">Teknologi Visual Terdepan</span>
+                        <span class="text-sm font-medium tracking-wide">Penunjang Promosi Efektif</span>
                     </div>
                     <h1 class="font-display text-6xl lg:text-8xl font-bold leading-none tracking-tight drop-shadow-lg">
-                        Wujudkan <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-cyan-200 to-white drop-shadow-sm">Visi Anda</span>
+                        Pikat Perhatian  <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-cyan-200 to-white drop-shadow-sm">Pelanggan</span>
                     </h1>
                     <p class="text-xl text-slate-100 max-w-2xl leading-relaxed font-light drop-shadow-md">
-                        Ekosistem terintegrasi untuk visualisasi bisnis.
+                        Media promosi fleksibel. Mudah dipasang, mudah dipindah, hasil maksimal.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 w-full justify-center">
                         <a href="https://wa.me/6289517506300" class="px-8 py-4 bg-white text-brand-900 rounded-full font-bold hover:bg-slate-200 transition shadow-xl text-center flex items-center justify-center gap-2">Hubungi Kami</a>
