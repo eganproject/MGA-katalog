@@ -115,7 +115,7 @@
     @include('partials.headerSection', [
         'title_1' => 'Tentang',
         'title_2' => 'Media Gudang Acc',
-        'description' => 'Astaga nagaa',
+        'description' => 'Solusi Advertising UMKM',
     ])
 
     <section class="py-24 bg-white relative">
@@ -142,8 +142,7 @@
                 <!-- Text Content -->
                 <div class="reveal-on-scroll" style="transition-delay: 200ms;">
                     <h2 class="text-brand-600 font-bold tracking-widest uppercase text-sm mb-4">SIAPA KAMI</h2>
-                    <h3 class="font-display text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">Lebih dari
-                        Sekadar Penyedia Perangkat Keras</h3>
+                    <h3 class="font-display text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">Tumbuh Bersama MGA !</h3>
                     <div class="space-y-4 text-slate-600 text-lg leading-relaxed">
                         <p>
                             Media Gudang Acc adalah perusahaan yang fokus menyediakan beragam aksesoris pemasaran
@@ -168,12 +167,12 @@
                         </p>
                     </div>
                     <div class="mt-8 pt-8 border-t border-slate-100 flex items-center gap-8">
-                        <img src="https://placehold.co/120x40/transparent/21939F?text=SIGNATURE" alt="Signature"
+                        <img src="{{ asset('public/assets/images/logo/logo.png') }}" alt="Signature"
                             class="h-10 opacity-50">
-                        <div>
+                        {{-- <div>
                             <p class="text-slate-900 font-bold">Direksi MGA</p>
                             <p class="text-slate-500 text-xs">Founder & CEO</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -181,7 +180,7 @@
     </section>
 
     <!-- STATS SECTION -->
-    <section class="py-20 bg-brand-900 relative overflow-hidden">
+    {{-- <section class="py-20 bg-brand-900 relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
@@ -203,7 +202,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- CTA SECTION -->
     <section class="py-24 bg-white relative overflow-hidden border-t border-slate-100">
