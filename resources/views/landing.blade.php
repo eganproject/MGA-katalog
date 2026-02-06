@@ -245,20 +245,20 @@
                                 $cat = $feat->category;
                             @endphp
                             <div class="reveal-item delay-{{ $delay }} group relative">
-                                <div class="relative bg-white/60 backdrop-blur-md border border-white/80 h-[28rem] rounded-t-full rounded-b-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden transition-all duration-500 hover:shadow-brand-500/20 hover:-translate-y-2 flex flex-col items-center justify-between p-6 pb-8">
+                                <div class="relative bg-white/60 backdrop-blur-md border border-white/80 h-auto md:h-[28rem] min-h-[22rem] rounded-none shadow-xl shadow-slate-200/50 overflow-hidden transition-all duration-500 hover:shadow-brand-500/20 hover:-translate-y-2 flex flex-col items-center justify-between p-5 sm:p-6 pb-7 sm:pb-8">
                                     <div class="absolute inset-0 bg-gradient-to-b from-brand-50/50 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                                    <div class="relative w-full flex-grow flex items-center justify-center mt-4">
-                                        <div class="absolute w-40 h-40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
+                                    <div class="relative w-full flex-grow flex items-center justify-center mt-2 sm:mt-4">
+                                        <div class="absolute w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
                                         @if($cat?->image)
-                                            <img src="{{ Storage::disk('public')->url($cat->image) }}" alt="{{ $cat->name }}" class="relative z-10 w-40 h-40 object-contain drop-shadow-xl animate-float">
+                                            <img src="{{ Storage::disk('public')->url($cat->image) }}" alt="{{ $cat->name }}" class="relative z-10 w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain drop-shadow-xl animate-float">
                                         @else
-                                            <div class="relative z-10 w-32 h-32 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold uppercase animate-float">{{ strtoupper(substr($cat->name ?? 'X',0,2)) }}</div>
+                                            <div class="relative z-10 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold uppercase animate-float">{{ strtoupper(substr($cat->name ?? 'X',0,2)) }}</div>
                                         @endif
                                     </div>
                                     <div class="text-center relative z-10 w-full">
-                                        <h4 class="text-xl font-display font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">{{ $cat?->name ?? 'Kategori' }}</h4>
+                                        <h4 class="text-lg sm:text-xl font-display font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">{{ $cat?->name ?? 'Kategori' }}</h4>
                                         @if($cat)
-                                            <a href="{{ route('kategori.show', $cat->slug) }}" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
+                                            <a href="{{ route('kategori.show', $cat->slug) }}" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-slate-200 text-slate-400 flex items-center justify-center mx-auto hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 shadow-sm group-hover:scale-110"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
                                         @endif
                                     </div>
                                 </div>
