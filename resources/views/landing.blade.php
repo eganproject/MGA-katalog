@@ -285,11 +285,11 @@
                         <span class="w-8 h-[2px] bg-brand-600 inline-block"></span> MENGAPA MGA?
                     </h2>
                     <h3 class="font-display text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-                        Rasakan <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500">Masa Depan Visual.</span>
+                        Rasakan  <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500">Standar Profesional Penanganan.</span>
                     </h3>
                     <p class="text-slate-600 text-lg leading-relaxed max-w-lg">
-                        Kami bukan sekadar vendor. Kami adalah arsitek pengalaman digital Anda yang menggabungkan estetika, teknologi, dan keandalan sistem.
+                        Dari perencanaan hingga eksekusi, kami memastikan hasil yang presisi, konsisten, dan siap mendukung kebutuhan bisnis Anda dalam jangka panjang.
                     </p>
                     <div class="mt-8 h-[2px] bg-slate-100 w-full relative overflow-visible rounded-full">
                          <div class="reveal-line absolute top-0 left-0 h-full bg-gradient-to-r from-brand-500 via-cyan-400 to-brand-500 animate-silhouette-glow shadow-brand-500/50"></div>
