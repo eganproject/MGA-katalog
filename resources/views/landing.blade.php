@@ -314,7 +314,7 @@
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-brand-100"><i data-lucide="settings" class="w-7 h-7"></i></div>
                         <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Produksi & Integrasi</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">MGA distributor langsung produk media aksesorisyang sudah memiliki 2 gudang Jakarta & Surabaya.
+                        <p class="text-slate-600 text-sm leading-relaxed">MGA distributor langsung produk media aksesoris yang sudah memiliki 2 gudang Jakarta & Surabaya.
 Setiap unit produk sudah siap pakai dan dapat dikirim keseluruh Indonesia.</p>
                     </div>
                 </div>
