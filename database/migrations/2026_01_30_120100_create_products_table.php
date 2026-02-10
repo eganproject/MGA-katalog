@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable(); // gambar utama kecil
             $table->text('excerpt')->nullable();
             $table->longText('description')->nullable();
+            $table->integer('sort_order')->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

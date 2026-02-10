@@ -17,6 +17,7 @@ class Product extends Model
         'thumbnail',
         'excerpt',
         'description',
+        'sort_order',
         'is_active',
     ];
 

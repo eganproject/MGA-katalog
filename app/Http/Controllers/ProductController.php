@@ -31,7 +31,7 @@ class ProductController extends Controller
             $query->where('product_category_id', $categoryId);
         }
 
-        $products = $query->latest()->paginate(10)->withQueryString();
+        $products = $query->orderBy('sort_order')->orderByDesc('created_at')->paginate(10)->withQueryString();
         $categories = ProductCategory::orderBy('name')->get();
 
         return view('admin.products.index', compact('products', 'categories'));
@@ -170,5 +170,16 @@ class ProductController extends Controller
         $product->delete();
 
         return back()->with('status', 'Produk dihapus.');
+    }
+
+    public function updateOrder(Request $request, Product $product): RedirectResponse
+    {
+        $data = $request->validate([
+            'sort_order' => ['required', 'integer', 'min:0', 'max:10000'],
+        ]);
+
+        $product->update($data);
+
+        return back()->with('status', 'Urutan produk diperbarui.');
     }
 }
