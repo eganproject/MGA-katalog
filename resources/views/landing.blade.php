@@ -313,8 +313,9 @@
                     <div class="absolute top-0 left-0 w-1 h-0 bg-brand-500 transition-all duration-700 group-hover:h-full"></div>
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-brand-100"><i data-lucide="settings" class="w-7 h-7"></i></div>
-                        <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Instalasi & Integrasi</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">Pemasangan presisi oleh tim tersertifikasi. Kabel rapi, sistem terkalibrasi, siap pakai tanpa kendala teknis.</p>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">Produksi & Integrasi</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">MGA distributor langsung produk media aksesorisyang sudah memiliki 2 gudang Jakarta & Surabaya.
+Setiap unit produk sudah siap pakai dan dapat dikirim keseluruh Indonesia.</p>
                     </div>
                 </div>
                 <div class="reveal-item delay-200 group relative p-8 bg-white border border-slate-200 rounded-3xl hover:border-purple-500/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-500 overflow-hidden">
@@ -322,7 +323,7 @@
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-purple-100"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
                         <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors">Quality Control Ketat</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">Zero-dead-pixel policy. Setiap unit melewati 48 jam stress-test sebelum pengiriman untuk durabilitas maksimal.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Setiap barang yang masuk kegudang kami sudah melalui Quality Control Ketat, sehingga kerusakan sangat minim sekali. Jika terjadi kerusakan saat sampai ditempat customer itu terjadi karena proses pengiriman. Untuk garansi S&K berlaku dapat hubungi admin untuk hal tersebut.</p>
                     </div>
                 </div>
                 <div class="reveal-item delay-300 group relative p-8 bg-white border border-slate-200 rounded-3xl hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 overflow-hidden">
@@ -330,7 +331,8 @@
                     <div class="relative z-10">
                         <div class="w-14 h-14 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-orange-100"><i data-lucide="headphones" class="w-7 h-7"></i></div>
                         <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors">Layanan Purna Jual</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">Dukungan teknis responsif 24/7 dan garansi resmi. Kami memastikan investasi visual Anda selalu beroperasi prima.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Didukung layanan teknis responsif Senin-Sabtu dan garansi resmi MGA.
+Kami memastikan setiap pertanyaan dan pesanan Anda tetap optimal, aman, dan beroperasi prima dalam jangka panjang.</p>
                     </div>
                 </div>
             </div>
