@@ -20,7 +20,7 @@
         <form method="GET" class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-xl shadow-slate-900/50 grid gap-3 sm:grid-cols-2">
             <div class="space-y-1">
                 <label class="text-xs text-slate-400">Cari produk</label>
-                <input type="text" name="q" value="{{ request('q') }}" placeholder="Nama / slug / excerpt" class="w-full rounded-xl border border-slate-700 bg-slate-800/70 px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:outline-none">
+                <input type="text" name="q" value="{{ request('q') }}" placeholder="Nama / slug / SKU / excerpt" class="w-full rounded-xl border border-slate-700 bg-slate-800/70 px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:outline-none">
             </div>
             <div class="space-y-1">
                 <label class="text-xs text-slate-400">Filter kategori</label>
@@ -46,6 +46,7 @@
                         <th class="px-4 py-3 text-left">#</th>
                         <th class="px-4 py-3 text-left">Urutan</th>
                         <th class="px-4 py-3 text-left">Produk</th>
+                        <th class="px-4 py-3 text-left">SKU</th>
                         <th class="px-4 py-3 text-left">Kategori</th>
                         <th class="px-4 py-3 text-left">Status</th>
                         <th class="px-4 py-3 text-left">Excerpt</th>
@@ -77,6 +78,7 @@
                                     </div>
                                 </div>
                             </td>
+                            <td class="px-4 py-3 text-slate-300">{{ $product->sku ?: '-' }}</td>
                             <td class="px-4 py-3 text-slate-300">{{ $product->category?->name ?? '-' }}</td>
                             <td class="px-4 py-3">
                                 <span class="inline-flex rounded-full px-3 py-1 text-xs font-semibold {{ $product->is_active ? 'bg-emerald-500/20 text-emerald-200' : 'bg-amber-500/20 text-amber-200' }}">
@@ -97,7 +99,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="px-4 py-6 text-center text-slate-500">Belum ada produk.</td>
+                            <td colspan="8" class="px-4 py-6 text-center text-slate-500">Belum ada produk.</td>
                         </tr>
                     @endforelse
                 </tbody>

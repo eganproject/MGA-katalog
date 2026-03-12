@@ -28,6 +28,12 @@
                 <p class="text-xs text-slate-400">Harus diisi, maksimal 255 karakter.</p>
             </div>
 
+            <div class="space-y-2">
+                <label class="block text-sm font-semibold text-slate-200" for="sku">SKU (opsional)</label>
+                <input id="sku" name="sku" type="text" value="{{ old('sku', $product->sku ?? '') }}" placeholder="Contoh: SKU-001" class="w-full rounded-xl border border-slate-700 bg-slate-800/70 px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:outline-none">
+                <p class="text-xs text-slate-400">Boleh dikosongkan, maksimal 255 karakter.</p>
+            </div>
+
             <div class="space-y-1">
                 <p class="flex items-center justify-between text-xs text-slate-400">
                     <span>Slug (otomatis)</span>

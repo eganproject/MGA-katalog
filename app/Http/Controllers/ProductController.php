@@ -23,6 +23,7 @@ class ProductController extends Controller
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                   ->orWhere('slug', 'like', "%{$search}%")
+                  ->orWhere('sku', 'like', "%{$search}%")
                   ->orWhere('excerpt', 'like', "%{$search}%");
             });
         }
@@ -52,6 +53,7 @@ class ProductController extends Controller
                 'product_category_id' => ['required', 'exists:product_categories,id'],
                 'name' => ['required', 'string', 'max:255'],
                 'slug' => ['required', 'string', 'max:255', Rule::unique('products', 'slug')],
+                'sku' => ['nullable', 'string', 'max:255'],
                 'thumbnail' => ['nullable', 'image', 'max:2048'],
                 'excerpt' => ['nullable', 'string', 'max:500'],
                 'description' => ['nullable', 'string'],
@@ -102,6 +104,7 @@ class ProductController extends Controller
                 'product_category_id' => ['required', 'exists:product_categories,id'],
                 'name' => ['required', 'string', 'max:255'],
                 'slug' => ['required', 'string', 'max:255', Rule::unique('products', 'slug')->ignore($product->id)],
+                'sku' => ['nullable', 'string', 'max:255'],
                 'thumbnail' => ['nullable', 'image', 'max:2048'],
                 'excerpt' => ['nullable', 'string', 'max:500'],
                 'description' => ['nullable', 'string'],

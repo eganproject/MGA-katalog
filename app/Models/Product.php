@@ -14,6 +14,7 @@ class Product extends Model
         'product_category_id',
         'name',
         'slug',
+        'sku',
         'thumbnail',
         'excerpt',
         'description',
