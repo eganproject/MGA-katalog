@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
             $navCategories = ProductCategory::where('is_active', true)
                 ->orderBy('sort_order')
                 ->orderBy('name')
-                ->limit(5)
+                ->limit(10)
                 ->get();
 
             $productsByCategory = Product::with('category')
